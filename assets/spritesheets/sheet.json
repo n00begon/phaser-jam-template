@@ -1,0 +1,41 @@
+{
+	"textures": [
+		{
+			"image": "sheet.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 896,
+				"h": 956
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "toast.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1300,
+						"h": 1300
+					},
+					"spriteSourceSize": {
+						"x": 204,
+						"y": 184,
+						"w": 894,
+						"h": 954
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 894,
+						"h": 954
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:ba4b53059b3a8e481e5bba83b94dd44d:e22f27bd42c4bf3d579f8790405b67f1:9c44ecd7e9a522007eaff2949095bc1d$"
+	}
+}

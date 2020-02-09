@@ -1,0 +1,38 @@
+{
+  "name": "phaser-jam-template",
+  "version": "1.0.0",
+  "description": "A Phaser 3 template to get you started on your jam.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack/devconfig.js --env dev",
+    "build": "webpack --config webpack/prodconfig.js --env prod",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n00begon/phaser-jam-template.git"
+  },
+  "keywords": [
+    "phaser"
+  ],
+  "author": "Tim Neumegen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n00begon/phaser-jam-template/issues"
+  },
+  "homepage": "https://github.com/n00begon/phaser-jam-template#readme",
+  "dependencies": {
+    "phaser": "^3.22.0"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "terser-webpack-plugin": "^2.3.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3"
+  }
+}

@@ -70,7 +70,7 @@ module.exports = {
             template: 'index.html'
         }),
         new CleanWebpackPlugin({
-            root: path.resolve(__dirname, "build")
+            root: path.resolve(__dirname, "dist")
         }),
     ]
 };

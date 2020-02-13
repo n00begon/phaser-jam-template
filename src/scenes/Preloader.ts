@@ -3,7 +3,7 @@ import { LoadingBar } from "../preloader/LoadingBar";
 export class Preloader extends Phaser.Scene {
     private static readonly ASSET_DIRECTORY = "./assets";
 
-    public preload() {
+    public preload(): void {
         new LoadingBar(this);
 
         this.loadSpriteSheets();
@@ -11,11 +11,11 @@ export class Preloader extends Phaser.Scene {
         this.loadJSON();
     }
 
-    public create() {
+    public create(): void {
         this.scene.start("Main");
     }
 
-    private loadSpriteSheets() {
+    private loadSpriteSheets(): void {
         const spritesheets = [
             "sheet",
         ];
@@ -27,7 +27,7 @@ export class Preloader extends Phaser.Scene {
         }
     }
 
-    private loadAudio() {
+    private loadAudio(): void {
         const audioFiles = [
             "Arpent"
         ]
@@ -39,7 +39,7 @@ export class Preloader extends Phaser.Scene {
         }
     }
 
-    private loadJSON() {
+    private loadJSON(): void {
         const jsonFiles = [
             "temp"
         ]

@@ -4,7 +4,7 @@ export class Main extends Phaser.Scene {
         super("Main");
     }
 
-    public create() {
+    public create(): void {
         const logo = this.add.image(this.sys.canvas.width / 2, this.sys.canvas.height / 2, "sheet", "toast");
         this.tweens.add({
             targets: logo,

@@ -4,30 +4,30 @@
 			"image": "sheet.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 896,
-				"h": 956
+				"w": 178,
+				"h": 214
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "toast.png",
+					"filename": "toasty.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1300,
-						"h": 1300
+						"w": 250,
+						"h": 250
 					},
 					"spriteSourceSize": {
-						"x": 204,
-						"y": 184,
-						"w": 894,
-						"h": 954
+						"x": 37,
+						"y": 19,
+						"w": 176,
+						"h": 212
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 894,
-						"h": 954
+						"w": 176,
+						"h": 212
 					}
 				}
 			]
@@ -36,6 +36,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ba4b53059b3a8e481e5bba83b94dd44d:e22f27bd42c4bf3d579f8790405b67f1:9c44ecd7e9a522007eaff2949095bc1d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9b386bea96aeb176d5dc76a94b58d90f:0dca3f67288dc80fc0c9409fa7b0ef38:9c44ecd7e9a522007eaff2949095bc1d$"
 	}
 }

@@ -6,7 +6,6 @@ export class Main extends Phaser.Scene {
 
     public create() {
         const logo = this.add.image(this.sys.canvas.width / 2, this.sys.canvas.height / 2, "sheet", "toast");
-        logo.setScale(0.1);
         this.tweens.add({
             targets: logo,
             y: 450,

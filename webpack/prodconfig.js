@@ -60,8 +60,8 @@ module.exports = {
                     force: true
                 },
                 {
-                    from: './game.css',
-                    to: './game.css',
+                    from: './web',
+                    to: './web',
                     force: true
                 }
             ]),

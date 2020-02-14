@@ -13,17 +13,16 @@ export class LoadingBar {
             scene.sys.canvas.width / 2 - LoadingBar.BOX_WIDTH / 2,
             scene.sys.canvas.height / 2 - LoadingBar.BOX_HEIGHT / 2,
             LoadingBar.BOX_WIDTH,
-            LoadingBar.BOX_HEIGHT
+            LoadingBar.BOX_HEIGHT,
         );
 
         scene.load.on("progress", (progress: number) => {
-
             progressBar.fillStyle(LoadingBar.PROGRESS_BAR_COLOR, 1);
             progressBar.fillRect(
                 scene.sys.canvas.width / 2 - LoadingBar.BOX_WIDTH / 2 + LoadingBar.BAR_OFFSET,
                 scene.sys.canvas.height / 2 - LoadingBar.BOX_HEIGHT / 2 + LoadingBar.BAR_OFFSET,
                 (LoadingBar.BOX_WIDTH - LoadingBar.BAR_OFFSET * 2) * progress,
-                LoadingBar.BOX_HEIGHT - LoadingBar.BAR_OFFSET * 2
+                LoadingBar.BOX_HEIGHT - LoadingBar.BAR_OFFSET * 2,
             );
         });
     }

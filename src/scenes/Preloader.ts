@@ -16,9 +16,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     private loadSpriteSheets(): void {
-        const spritesheets = [
-            "sheet",
-        ];
+        const spritesheets = ["sheet"];
 
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/spritesheets/`);
 
@@ -28,9 +26,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     private loadAudio(): void {
-        const audioFiles = [
-            "Arpent"
-        ]
+        const audioFiles = ["Arpent"];
 
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/audio/`);
 
@@ -40,9 +36,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     private loadJSON(): void {
-        const jsonFiles = [
-            "temp"
-        ]
+        const jsonFiles = ["temp"];
 
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/json/`);
 

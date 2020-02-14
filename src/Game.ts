@@ -1,5 +1,5 @@
 import "phaser";
-import "phaser"
+import "phaser";
 import { Preloader } from "./scenes/Preloader";
 import { Main } from "./scenes/Main";
 
@@ -8,10 +8,7 @@ const config: Phaser.Types.Core.GameConfig = {
     height: 540,
 
     parent: "canvas",
-    scene: [
-        Preloader,
-        Main,
-    ],
+    scene: [Preloader, Main],
     type: Phaser.AUTO,
 
     physics: {

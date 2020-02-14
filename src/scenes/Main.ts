@@ -1,5 +1,4 @@
 export class Main extends Phaser.Scene {
-
     public constructor() {
         super("Main");
     }
@@ -12,7 +11,7 @@ export class Main extends Phaser.Scene {
             duration: 2000,
             ease: "Power2",
             yoyo: true,
-            loop: -1
+            loop: -1,
         });
 
         const backgroundMusic = this.sound.add("Arpent");

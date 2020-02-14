@@ -4,15 +4,15 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 
 <div align="center">
 
-!["Toasty"](assets/images/toasty.png) 
+!["Toasty"](assets/images/toasty.png)
 
 </div>
-## Getting Started 
+## Getting Started
 
 Install the dependencies
 
 ```bash
-npm install 
+npm install
 ```
 
 Run the live updating development server
@@ -27,6 +27,16 @@ Create the production build
 npm run build
 ```
 
+## Editor
+
+To use Prettier and ESLint to auto fix in VSCode:
+
+```
+"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+}
+```
+
 ## Credits
 
 ### Inspired by the following templates:
@@ -36,6 +46,7 @@ npm run build
 [Phaser 3 TypeScript/Webpack Project Template](https://github.com/wtravO/phaser3-typescript-template)
 
 ### Image
+
 Toasty created for this project by [Jaclyn Kim](https://www.fiverr.com/jaclynkim)
 
 ### Music

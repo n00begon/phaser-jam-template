@@ -36,7 +36,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     private loadJSON(): void {
-        const jsonFiles = ["temp"];
+        const jsonFiles = ["physicsShapes"];
 
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/json/`);
 

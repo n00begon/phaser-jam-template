@@ -1,6 +1,6 @@
 export class LoadingBar {
     private static readonly PROGRESS_BOX_COLOR = new Phaser.Display.Color(220, 220, 220).color;
-    private static readonly PROGRESS_BAR_COLOR = new Phaser.Display.Color(170, 170, 170).color;
+    private static readonly PROGRESS_BAR_COLOR = new Phaser.Display.Color(214, 48, 116).color;
     private static readonly BOX_WIDTH = 320;
     private static readonly BOX_HEIGHT = 50;
     private static readonly BAR_OFFSET = 10;

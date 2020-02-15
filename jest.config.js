@@ -1,2 +1,5 @@
-export const preset = "ts-jest";
-export const testEnvironment = "node";
+// eslint-disable-next-line no-undef
+module.exports = {
+    preset: "ts-jest",
+    testEnvironment: "node",
+};

@@ -1,10 +1,12 @@
+import { Wrap } from "../utilities/Wrap";
+
 export class Toasty {
     private static readonly TURN_SPEED = 0.06;
     private static readonly ACCELERATION = Toasty.TURN_SPEED / 4;
     private static readonly MOVE_SPEED = 3;
     private static readonly JUMP_HEIGHT = 10;
     private toasty: Phaser.Physics.Matter.Image;
-
+    private scene: Phaser.Scene;
     private canJump = 0;
     private currentSpeed = 0;
 
@@ -15,6 +17,7 @@ export class Toasty {
     private rightKey2: Phaser.Input.Keyboard.Key;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
+        this.scene = scene;
         const physicsShapes = scene.cache.json.get("physicsShapes");
         this.toasty = scene.matter.add.image(x, y, "sheet", "toasty", {
             // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -53,6 +56,8 @@ export class Toasty {
         }
 
         this.canJump = Math.max(0, this.canJump - 1);
+
+        this.toasty.setX(Wrap.screenWrap(this.toasty.x, this.scene.sys.canvas.width));
     }
 
     private setupCollisions(scene: Phaser.Scene): void {

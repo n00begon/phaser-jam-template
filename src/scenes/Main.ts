@@ -9,7 +9,6 @@ export class Main extends Phaser.Scene {
     }
 
     public create(): void {
-        this.matter.world.setBounds(0, 0, this.sys.canvas.width, this.sys.canvas.height, 32, true, true, true, true);
         this.toasty = new Toasty(this, this.sys.canvas.width / 2, this.sys.canvas.height / 2);
 
         const physicsShapes = this.cache.json.get("physicsShapes");

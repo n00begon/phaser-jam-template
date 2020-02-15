@@ -16,6 +16,13 @@ export class Toasty {
     private leftKey2: Phaser.Input.Keyboard.Key;
     private rightKey2: Phaser.Input.Keyboard.Key;
 
+    /**
+     * Creates the toasty object
+     *
+     * @param scene - the scene to add the object to
+     * @param x - the x position where toasty will start
+     * @param y - the y position where toasty will start
+     */
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.scene = scene;
         const physicsShapes = scene.cache.json.get("physicsShapes");
@@ -59,6 +66,11 @@ export class Toasty {
         this.toasty.setX(Wrap.screenWrap(this.toasty.x, this.scene.sys.canvas.width));
     }
 
+    /**
+     * Sets up the collision listener. Currently listening to set when Toasty can jump.
+     *
+     * @param scene - the scene to set the collisions on
+     */
     private setupCollisions(scene: Phaser.Scene): void {
         scene.matter.world.on(
             "collisionstart",

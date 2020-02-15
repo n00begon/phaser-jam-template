@@ -24,8 +24,9 @@
     "homepage": "https://github.com/n00begon/phaser-jam-template#readme",
     "husky": {
         "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
             "pre-commit": "lint-staged",
-            "pre-push": "npm test"
+            "pre-push": "npm run build"
         }
     },
     "dependencies": {
@@ -55,6 +56,9 @@
         "webpack-dev-server": "^3.10.3"
     },
     "lint-staged": {
-        "*.ts": "eslint --fix"
+        "*.ts": [
+            "npm run lint",
+            "npm run test"
+        ]
     }
 }

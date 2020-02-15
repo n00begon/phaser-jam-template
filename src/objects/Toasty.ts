@@ -1,10 +1,12 @@
 export class Toasty {
     private static readonly TURN_SPEED = 0.06;
+    private static readonly ACCELERATION = Toasty.TURN_SPEED / 4;
     private static readonly MOVE_SPEED = 3;
     private static readonly JUMP_HEIGHT = 10;
     private toasty: Phaser.Physics.Matter.Image;
 
     private canJump = 0;
+    private currentSpeed = 0;
 
     private jumpKey: Phaser.Input.Keyboard.Key;
     private leftKey: Phaser.Input.Keyboard.Key;
@@ -29,14 +31,21 @@ export class Toasty {
     }
 
     public update(): void {
+        let direction = 0;
         if (this.leftKey.isDown || this.leftKey2.isDown) {
-            this.toasty.setAngularVelocity(-Toasty.TURN_SPEED);
-            this.toasty.setVelocityX(-Toasty.MOVE_SPEED);
+            direction = -1;
         }
 
         if (this.rightKey.isDown || this.rightKey2.isDown) {
-            this.toasty.setAngularVelocity(Toasty.TURN_SPEED);
-            this.toasty.setVelocityX(Toasty.MOVE_SPEED);
+            direction = 1;
+        }
+
+        if (direction !== 0) {
+            this.currentSpeed += direction * Toasty.ACCELERATION;
+            this.currentSpeed = Math.min(Toasty.TURN_SPEED, Math.max(-Toasty.TURN_SPEED, this.currentSpeed));
+
+            this.toasty.setAngularVelocity(this.currentSpeed);
+            this.toasty.setVelocityX((this.currentSpeed / Toasty.TURN_SPEED) * Toasty.MOVE_SPEED);
         }
 
         if (this.jumpKey.isDown && this.canJump > 0) {
@@ -51,7 +60,7 @@ export class Toasty {
             "collisionstart",
             (
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                event: any,
+                _event: any,
                 bodyA: { gameObject: Phaser.Physics.Matter.Image },
                 bodyB: { gameObject: Phaser.Physics.Matter.Image },
             ) => {

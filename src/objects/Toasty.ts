@@ -7,7 +7,7 @@ export class Toasty {
     private static readonly JUMP_HEIGHT = 10;
     private toasty: Phaser.Physics.Matter.Image;
     private scene: Phaser.Scene;
-    private canJump = 0;
+    private canJump = false;
     private currentSpeed = 0;
 
     private jumpKey: Phaser.Input.Keyboard.Key;
@@ -51,11 +51,10 @@ export class Toasty {
             this.toasty.setVelocityX((this.currentSpeed / Toasty.TURN_SPEED) * Toasty.MOVE_SPEED);
         }
 
-        if (this.jumpKey.isDown && this.canJump > 0) {
+        if (this.jumpKey.isDown && this.canJump) {
             this.toasty.setVelocityY(-Toasty.JUMP_HEIGHT);
+            this.canJump = false;
         }
-
-        this.canJump = Math.max(0, this.canJump - 1);
 
         this.toasty.setX(Wrap.screenWrap(this.toasty.x, this.scene.sys.canvas.width));
     }
@@ -70,7 +69,7 @@ export class Toasty {
                 bodyB: { gameObject: Phaser.Physics.Matter.Image },
             ) => {
                 if (bodyA.gameObject === this.toasty || bodyB.gameObject === this.toasty) {
-                    this.canJump = 5;
+                    this.canJump = true;
                 }
             },
         );

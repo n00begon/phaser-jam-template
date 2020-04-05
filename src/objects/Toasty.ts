@@ -1,5 +1,3 @@
-import { Wrap } from "../utilities/Wrap";
-
 export class Toasty {
     private static readonly TURN_SPEED = 0.06;
     private static readonly ACCELERATION = Toasty.TURN_SPEED / 4;

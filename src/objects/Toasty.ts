@@ -3,8 +3,8 @@ import { Wrap } from "../utilities/Wrap";
 export class Toasty {
     private static readonly TURN_SPEED = 0.06;
     private static readonly ACCELERATION = Toasty.TURN_SPEED / 4;
-    private static readonly MOVE_SPEED = 3;
-    private static readonly JUMP_HEIGHT = 17;
+    private static readonly MOVE_SPEED = 5;
+    private static readonly JUMP_HEIGHT = 16;
     private toasty: Phaser.Physics.Matter.Image;
     private scene: Phaser.Scene;
     private canJump = false;
@@ -31,6 +31,9 @@ export class Toasty {
             // @ts-ignore
             shape: physicsShapes.toasty, //definitions does not have the shape in them
         });
+        this.toasty.setScale(0.8);
+        this.toasty.setFriction(0);
+        this.scene.cameras.main.startFollow(this.toasty);
 
         this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -63,7 +66,7 @@ export class Toasty {
             this.canJump = false;
         }
 
-        this.toasty.setX(Wrap.screenWrap(this.toasty.x, this.scene.sys.canvas.width));
+        // this.toasty.setX(Wrap.screenWrap(this.toasty.x, this.scene.sys.canvas.width));
     }
 
     /**

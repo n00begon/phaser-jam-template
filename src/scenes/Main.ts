@@ -1,6 +1,11 @@
 import { Toasty } from "../objects/Toasty";
 
 export class Main extends Phaser.Scene {
+    private static readonly LEFTBOUNDS = -150;
+    private static readonly RIGHTBOUNDS = 2000;
+    private static readonly TOPBOUNDS = -200;
+    private static readonly BOTTOMBOUNDS = 1120;
+
     private toasty!: Toasty;
     private hill!: Phaser.Physics.Matter.Image;
 
@@ -9,8 +14,18 @@ export class Main extends Phaser.Scene {
     }
 
     public create(): void {
-        this.toasty = new Toasty(this, this.sys.canvas.width / 2, this.sys.canvas.height / 2);
+        this.setupHill();
+        this.setupCamera();
+        this.setupMusic();
+        this.toasty = new Toasty(this, this.sys.canvas.width / 2, this.sys.canvas.height / 3);
+        this.matter.world.setBounds(Main.LEFTBOUNDS, Main.TOPBOUNDS, Main.RIGHTBOUNDS, Main.BOTTOMBOUNDS);
+    }
 
+    public update(): void {
+        this.toasty.update();
+    }
+
+    private setupHill(): void {
         const physicsShapes = this.cache.json.get("physicsShapes");
         this.hill = this.matter.add.image(this.sys.canvas.width / 2, this.sys.canvas.height, "sheet", "hill", {
             // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -18,16 +33,18 @@ export class Main extends Phaser.Scene {
             shape: physicsShapes.hill, //definitions does not have the shape in them
         });
         this.hill.setStatic(true);
+    }
 
+    private setupCamera(): void {
         this.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
+        this.cameras.main.setZoom(1.2);
+        this.cameras.main.setBounds(Main.LEFTBOUNDS, Main.TOPBOUNDS, Main.RIGHTBOUNDS, Main.BOTTOMBOUNDS);
+    }
 
+    private setupMusic(): void {
         const backgroundMusic = this.sound.add("Arpent");
         backgroundMusic.play({
             loop: true,
         });
-    }
-
-    public update(): void {
-        this.toasty.update();
     }
 }

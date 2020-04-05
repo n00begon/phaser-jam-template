@@ -4,8 +4,8 @@ import { Preloader } from "./scenes/Preloader";
 import { Main } from "./scenes/Main";
 
 const config: Phaser.Types.Core.GameConfig = {
-    width: 960,
-    height: 540,
+    width: 1640,
+    height: 960,
 
     parent: "canvas",
     scene: [Preloader, Main],

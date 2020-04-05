@@ -3,7 +3,12 @@ import { LoadingBar } from "../preloader/LoadingBar";
 export class Preloader extends Phaser.Scene {
     private static readonly ASSET_DIRECTORY = "./assets";
 
+    public constructor() {
+        super("Preloader");
+    }
+
     public preload(): void {
+        this.add.image(this.sys.canvas.width / 2, this.sys.canvas.height / 2, "logo");
         new LoadingBar(this);
 
         this.loadSpriteSheets();

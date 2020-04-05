@@ -7,6 +7,7 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 !["Toasty"](assets/images/toasty.png)
 
 </div>
+
 ## Getting Started
 
 Install the dependencies

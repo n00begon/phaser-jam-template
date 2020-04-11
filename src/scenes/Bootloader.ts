@@ -1,3 +1,6 @@
+/**
+ * Boot loader is the initial scene to load any assets used during the preloader
+ */
 export class Bootloader extends Phaser.Scene {
     private static readonly ASSET_DIRECTORY = "./assets";
 

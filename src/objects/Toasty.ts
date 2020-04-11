@@ -1,6 +1,9 @@
+/**
+ * Toasty is the character that the player controls.
+ */
 export class Toasty {
     private static readonly TURN_SPEED = 0.06;
-    private static readonly ACCELERATION = Toasty.TURN_SPEED / 4;
+    private static readonly ACCELERATION = Toasty.TURN_SPEED / 20;
     private static readonly MOVE_SPEED = 5;
     private static readonly JUMP_HEIGHT = 16;
     private toasty: Phaser.Physics.Matter.Image;
@@ -17,7 +20,7 @@ export class Toasty {
     /**
      * Creates the toasty object
      *
-     * @param scene - the scene to add the object to
+     * @param scene - the phaser scene to add the object to
      * @param x - the x position where toasty will start
      * @param y - the y position where toasty will start
      */
@@ -41,6 +44,9 @@ export class Toasty {
         this.setupCollisions(scene);
     }
 
+    /**
+     * The update cycle. This is listening for key presses and controlling the movement
+     */
     public update(): void {
         let direction = 0;
         if (this.leftKey.isDown || this.leftKey2.isDown) {
@@ -56,15 +62,17 @@ export class Toasty {
             this.currentSpeed = Math.min(Toasty.TURN_SPEED, Math.max(-Toasty.TURN_SPEED, this.currentSpeed));
 
             this.toasty.setAngularVelocity(this.currentSpeed);
-            this.toasty.setVelocityX((this.currentSpeed / Toasty.TURN_SPEED) * Toasty.MOVE_SPEED);
+            if (this.canJump) {
+                this.toasty.setVelocityX((this.currentSpeed / Toasty.TURN_SPEED) * Toasty.MOVE_SPEED);
+            }
+        } else {
+            this.currentSpeed *= 0.95;
         }
 
         if (this.jumpKey.isDown && this.canJump) {
             this.toasty.setVelocityY(-Toasty.JUMP_HEIGHT);
             this.canJump = false;
         }
-
-        // this.toasty.setX(Wrap.screenWrap(this.toasty.x, this.scene.sys.canvas.width));
     }
 
     /**

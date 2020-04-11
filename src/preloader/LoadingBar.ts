@@ -1,3 +1,6 @@
+/**
+ * Loading bar creates a loading bar which fills as the assets are loaded.
+ */
 export class LoadingBar {
     private static readonly PROGRESS_BOX_COLOR = new Phaser.Display.Color(220, 220, 220).color;
     private static readonly PROGRESS_BAR_COLOR = new Phaser.Display.Color(214, 48, 116).color;

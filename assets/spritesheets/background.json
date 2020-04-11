@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "background.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1502,
+				"h": 1598
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "backgroundHill",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 230,
+						"w": 1500,
+						"h": 570
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1500,
+						"h": 570
+					}
+				},
+				{
+					"filename": "backgroundEmpty",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1024,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					},
+					"frame": {
+						"x": 1,
+						"y": 573,
+						"w": 1024,
+						"h": 1024
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:620e1a91a46ec4a7b50ec33a87844f90:566399858c3ae97687535e33bd68e475:2ba65c328dea799e4d80739630892abf$"
+	}
+}

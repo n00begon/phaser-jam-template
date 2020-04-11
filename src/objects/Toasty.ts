@@ -24,7 +24,7 @@ export class Toasty {
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.scene = scene;
         const physicsShapes = scene.cache.json.get("physicsShapes");
-        this.toasty = scene.matter.add.image(x, y, "sheet", "toasty", {
+        this.toasty = scene.matter.add.image(x, y, "sprites", "toasty", {
             // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
             // @ts-ignore
             shape: physicsShapes.toasty, //definitions does not have the shape in them

@@ -21,8 +21,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     private loadSpriteSheets(): void {
-        const spritesheets = ["sheet"];
-
+        const spritesheets = ["sprites", "background"];
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/spritesheets/`);
 
         for (const sheet of spritesheets) {

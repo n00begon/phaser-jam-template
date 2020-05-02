@@ -24,13 +24,11 @@
     "homepage": "https://github.com/n00begon/phaser-jam-template#readme",
     "husky": {
         "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
             "pre-commit": "lint-staged && npm run test",
             "pre-push": "npm run build"
         }
     },
     "dependencies": {
-        "commitlint": "^8.3.5",
         "phaser": "^3.23.0"
     },
     "devDependencies": {

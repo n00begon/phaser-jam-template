@@ -1,5 +1,4 @@
 import "phaser";
-import "phaser";
 import { Bootloader } from "./scenes/Bootloader";
 import { Preloader } from "./scenes/Preloader";
 import { Main } from "./scenes/Main";

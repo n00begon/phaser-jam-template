@@ -48,7 +48,7 @@ export class Preloader extends Phaser.Scene {
      * Loads the audio files
      */
     private loadAudio(): void {
-        const audioFiles = ["Arpent"];
+        const audioFiles = ["Arpent", "powerUp4"];
 
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/audio/`);
 

@@ -1,5 +1,5 @@
 import { Toasty } from "../objects/Toasty";
-import { Coin } from "../objects/Coint";
+import { CoinSet } from "../objects/CoinSet";
 
 /**
  * Main is the gameplay scene wgere the main gameplay loop takes place.
@@ -11,6 +11,7 @@ export class Main extends Phaser.Scene {
     private static readonly BOTTOMBOUNDS = 1300;
 
     private toasty!: Toasty;
+    private cointSet!: CoinSet;
     private hill!: Phaser.Physics.Matter.Image;
 
     /**
@@ -28,7 +29,22 @@ export class Main extends Phaser.Scene {
         this.setupCamera();
         this.setupBackground();
         this.setupMusic();
-        this.setupCoins();
+
+        this.anims.create({
+            frameRate: 6,
+            frames: [
+                { key: "sprites", frame: "gold_1" },
+                { key: "sprites", frame: "gold_2" },
+                { key: "sprites", frame: "gold_3" },
+                { key: "sprites", frame: "gold_4" },
+                { key: "sprites", frame: "gold_5" },
+                { key: "sprites", frame: "gold_6" },
+            ],
+            key: "coinSpin",
+            repeat: -1,
+        });
+
+        this.cointSet = new CoinSet(this, 3, 200, 300);
         this.toasty = new Toasty(this, this.sys.canvas.width / 2, this.sys.canvas.height / 3);
         this.matter.world.setBounds(Main.LEFTBOUNDS, Main.TOPBOUNDS, Main.RIGHTBOUNDS, Main.BOTTOMBOUNDS);
     }
@@ -38,6 +54,7 @@ export class Main extends Phaser.Scene {
      */
     public update(): void {
         this.toasty.update();
+        this.cointSet.update();
     }
 
     /**
@@ -93,15 +110,7 @@ export class Main extends Phaser.Scene {
         const backgroundMusic = this.sound.add("Arpent");
         backgroundMusic.play({
             loop: true,
+            volume: 0.3,
         });
-    }
-
-    /**
-     * Sets up the coins for toasty to collect
-     */
-    private setupCoins(): void {
-        for (let i = 0; i < 3; i++) {
-            new Coin(this, 200 + 100 * i, 300);
-        }
     }
 }

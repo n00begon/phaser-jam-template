@@ -1,4 +1,5 @@
 import { Toasty } from "../objects/Toasty";
+import { Coin } from "../objects/Coint";
 
 /**
  * Main is the gameplay scene wgere the main gameplay loop takes place.
@@ -27,6 +28,7 @@ export class Main extends Phaser.Scene {
         this.setupCamera();
         this.setupBackground();
         this.setupMusic();
+        this.setupCoins();
         this.toasty = new Toasty(this, this.sys.canvas.width / 2, this.sys.canvas.height / 3);
         this.matter.world.setBounds(Main.LEFTBOUNDS, Main.TOPBOUNDS, Main.RIGHTBOUNDS, Main.BOTTOMBOUNDS);
     }
@@ -92,5 +94,14 @@ export class Main extends Phaser.Scene {
         backgroundMusic.play({
             loop: true,
         });
+    }
+
+    /**
+     * Sets up the coins for toasty to collect
+     */
+    private setupCoins(): void {
+        for (let i = 0; i < 3; i++) {
+            new Coin(this, 200 + 100 * i, 300);
+        }
     }
 }

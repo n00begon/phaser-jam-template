@@ -49,7 +49,7 @@ export class Main extends Phaser.Scene {
             score += coinSet.update();
         });
         if (score >= this.maxScore) {
-            console.log("End");
+            this.scene.start("Credits");
         }
 
         this.scoreText.update(score);
@@ -105,6 +105,7 @@ export class Main extends Phaser.Scene {
      * Setups the looping background track
      */
     private setupMusic(): void {
+        this.sound.stopAll();
         const backgroundMusic = this.sound.add("Arpent");
         backgroundMusic.play({
             loop: true,

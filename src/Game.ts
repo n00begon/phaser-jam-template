@@ -2,13 +2,14 @@ import "phaser";
 import { Bootloader } from "./scenes/Bootloader";
 import { Preloader } from "./scenes/Preloader";
 import { Main } from "./scenes/Main";
+import { Credits } from "./scenes/Credits";
 
 const config: Phaser.Types.Core.GameConfig = {
     width: 1640,
     height: 960,
 
     parent: "canvas",
-    scene: [Bootloader, Preloader, Main],
+    scene: [Bootloader, Preloader, Main, Credits],
     type: Phaser.AUTO,
 
     physics: {

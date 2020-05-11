@@ -17,11 +17,14 @@ export class CoinSet {
     constructor(scene: Phaser.Scene, amount: number, x: number, y: number) {
         this.coins = new Array<Coin>();
         this.originalSize = amount;
-        scene.sound.add("powerUp4");
 
         for (let i = 0; i < this.originalSize; i++) {
             this.coins.push(new Coin(scene, x, i, y));
         }
+    }
+
+    public getOriginalSize(): number {
+        return this.originalSize;
     }
 
     public update(): number {

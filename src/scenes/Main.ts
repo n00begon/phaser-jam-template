@@ -1,5 +1,6 @@
 import { Toasty } from "../objects/Toasty";
 import { CoinSet } from "../objects/CoinSet";
+import { ScoreText } from "../utilities/ScoreText";
 
 /**
  * Main is the gameplay scene wgere the main gameplay loop takes place.
@@ -10,10 +11,11 @@ export class Main extends Phaser.Scene {
     private static readonly TOPBOUNDS = -200;
     private static readonly BOTTOMBOUNDS = 1300;
 
+    private maxScore!: number;
     private toasty!: Toasty;
-    private cointSet!: CoinSet;
+    private coinSets!: CoinSet[];
     private hill!: Phaser.Physics.Matter.Image;
-
+    private scoreText!: ScoreText;
     /**
      * The constructor sets the scene ID
      */
@@ -25,28 +27,16 @@ export class Main extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the game
      */
     public create(): void {
+        this.maxScore = 0;
         this.setupHill();
         this.setupCamera();
         this.setupBackground();
         this.setupMusic();
-
-        this.anims.create({
-            frameRate: 6,
-            frames: [
-                { key: "sprites", frame: "gold_1" },
-                { key: "sprites", frame: "gold_2" },
-                { key: "sprites", frame: "gold_3" },
-                { key: "sprites", frame: "gold_4" },
-                { key: "sprites", frame: "gold_5" },
-                { key: "sprites", frame: "gold_6" },
-            ],
-            key: "coinSpin",
-            repeat: -1,
-        });
-
-        this.cointSet = new CoinSet(this, 3, 200, 300);
+        this.setupCoins();
         this.toasty = new Toasty(this, this.sys.canvas.width / 2, this.sys.canvas.height / 3);
         this.matter.world.setBounds(Main.LEFTBOUNDS, Main.TOPBOUNDS, Main.RIGHTBOUNDS, Main.BOTTOMBOUNDS);
+
+        this.scoreText = new ScoreText(this, 200, 100);
     }
 
     /**
@@ -54,7 +44,15 @@ export class Main extends Phaser.Scene {
      */
     public update(): void {
         this.toasty.update();
-        this.cointSet.update();
+        let score = 0;
+        this.coinSets.forEach(coinSet => {
+            score += coinSet.update();
+        });
+        if (score >= this.maxScore) {
+            console.log("End");
+        }
+
+        this.scoreText.update(score);
     }
 
     /**
@@ -111,6 +109,31 @@ export class Main extends Phaser.Scene {
         backgroundMusic.play({
             loop: true,
             volume: 0.3,
+        });
+    }
+
+    private setupCoins(): void {
+        this.sound.add("powerUp4");
+        this.anims.create({
+            frameRate: 6,
+            frames: [
+                { key: "sprites", frame: "gold_1" },
+                { key: "sprites", frame: "gold_2" },
+                { key: "sprites", frame: "gold_3" },
+                { key: "sprites", frame: "gold_4" },
+                { key: "sprites", frame: "gold_5" },
+                { key: "sprites", frame: "gold_6" },
+            ],
+            key: "coinSpin",
+            repeat: -1,
+        });
+        this.coinSets = new Array<CoinSet>();
+
+        this.coinSets.push(new CoinSet(this, 3, 200, 300));
+        this.coinSets.push(new CoinSet(this, 3, 1400, 300));
+
+        this.coinSets.forEach(coinSet => {
+            this.maxScore += coinSet.getOriginalSize();
         });
     }
 }

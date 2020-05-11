@@ -1,4 +1,5 @@
 import { LoadingBar } from "../preloader/LoadingBar";
+import * as WebFontLoader from "webfontloader";
 
 /**
  * Preloader scene loads all the assets for the main game
@@ -23,6 +24,7 @@ export class Preloader extends Phaser.Scene {
         this.loadSpriteSheets();
         this.loadAudio();
         this.loadJSON();
+        this.loadFonts();
     }
 
     /**
@@ -68,5 +70,13 @@ export class Preloader extends Phaser.Scene {
         for (const json of jsonFiles) {
             this.load.json(json, `${json}.json`);
         }
+    }
+
+    private loadFonts(): void {
+        WebFontLoader.load({
+            google: {
+                families: ["Chewy"],
+            },
+        });
     }
 }

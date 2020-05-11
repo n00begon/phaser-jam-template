@@ -29,7 +29,10 @@
         }
     },
     "dependencies": {
-        "phaser": "^3.23.0"
+        "@types/webfontloader": "^1.6.29",
+        "phaser": "^3.23.0",
+        "webfont": "^9.0.0",
+        "webfontloader": "^1.6.28"
     },
     "devDependencies": {
         "@types/jest": "^25.2.1",

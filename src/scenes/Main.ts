@@ -116,7 +116,7 @@ export class Main extends Phaser.Scene {
     private setupCoins(): void {
         this.sound.add("powerUp4");
         this.anims.create({
-            frameRate: 6,
+            frameRate: 10,
             frames: [
                 { key: "sprites", frame: "gold_1" },
                 { key: "sprites", frame: "gold_2" },

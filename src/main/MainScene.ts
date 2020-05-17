@@ -1,6 +1,6 @@
-import { Toasty } from "../objects/Toasty";
-import { CoinSet } from "../objects/CoinSet";
-import { ScoreText } from "../utilities/ScoreText";
+import { Toasty } from "./objects/Toasty";
+import { CoinSet } from "./objects/CoinSet";
+import { ScoreText } from "./ScoreText";
 
 /**
  * Main is the gameplay scene wgere the main gameplay loop takes place.

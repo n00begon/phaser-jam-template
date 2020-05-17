@@ -1,8 +1,8 @@
 import "phaser";
-import { Bootloader } from "./scenes/Bootloader";
-import { Preloader } from "./scenes/Preloader";
-import { Main } from "./scenes/Main";
-import { Credits } from "./scenes/Credits";
+import { Bootloader } from "./preloader/BootloaderScene'";
+import { Preloader } from "./preloader/PreloaderScene";
+import { Main } from "./main/MainScene";
+import { Credits } from "./credits/CreditsScene";
 
 const config: Phaser.Types.Core.GameConfig = {
     width: 1640,

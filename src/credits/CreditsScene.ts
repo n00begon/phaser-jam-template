@@ -1,6 +1,6 @@
-import { Toasty } from "../objects/Toasty";
-import { CoinSet } from "../objects/CoinSet";
-import { CreditText } from "../utilities/CreditText";
+import { Toasty } from "../main/objects/Toasty";
+import { CoinSet } from "../main/objects/CoinSet";
+import { CreditText } from "./CreditText";
 
 export class Credits extends Phaser.Scene {
     private textList = new Array<CreditText>(5);

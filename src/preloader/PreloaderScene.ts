@@ -1,4 +1,4 @@
-import { LoadingBar } from "../preloader/LoadingBar";
+import { LoadingBar } from "./LoadingBar";
 import * as WebFontLoader from "webfontloader";
 
 /**

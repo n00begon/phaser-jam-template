@@ -1,5 +1,3 @@
-import { Toasty } from "../main/objects/Toasty";
-import { CoinSet } from "../main/objects/CoinSet";
 import { CreditText } from "./CreditText";
 
 export class Credits extends Phaser.Scene {

@@ -1,5 +1,4 @@
 import { Toasty } from "./objects/Toasty";
-import { ScoreText } from "./ScoreText";
 import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
 
@@ -13,7 +12,6 @@ export class InteractiveManager {
     private maxScore: number;
     private currentScore: number;
     private toasty: Toasty;
-    private scoreText: ScoreText;
 
     /**
      * Adds the interactive objects to the scene
@@ -41,9 +39,6 @@ export class InteractiveManager {
         this.createCoinRow(scene, 3, 1400, 300);
 
         new Hill(scene);
-
-        this.scoreText = new ScoreText(scene, 200, 100);
-        this.scoreText.update(this.currentScore);
     }
 
     /**
@@ -63,7 +58,7 @@ export class InteractiveManager {
             this.scene.scene.start("Credits");
         }
 
-        this.scoreText.update(this.currentScore);
+        this.scene.events.emit("scoreChange", this.currentScore);
     }
 
     /**

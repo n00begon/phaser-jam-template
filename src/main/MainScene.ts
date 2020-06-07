@@ -22,6 +22,7 @@ export class Main extends Phaser.Scene {
         new AudioManager(this);
         new BackgroundManager(this);
         this.interactiveManager = new InteractiveManager(this);
+        this.scene.run("UI");
     }
 
     /**

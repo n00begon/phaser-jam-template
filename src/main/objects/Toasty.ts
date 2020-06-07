@@ -12,6 +12,7 @@ export class Toasty {
     private currentSpeed = 0;
 
     private jumpKey: Phaser.Input.Keyboard.Key;
+    private jumpKey2: Phaser.Input.Keyboard.Key;
     private leftKey: Phaser.Input.Keyboard.Key;
     private rightKey: Phaser.Input.Keyboard.Key;
     private leftKey2: Phaser.Input.Keyboard.Key;
@@ -37,6 +38,7 @@ export class Toasty {
         this.scene.cameras.main.startFollow(this.toasty);
 
         this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.jumpKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -69,7 +71,7 @@ export class Toasty {
             this.currentSpeed *= 0.95;
         }
 
-        if (this.jumpKey.isDown && this.canJump) {
+        if ((this.jumpKey.isDown || this.jumpKey2.isDown) && this.canJump) {
             this.toasty.setVelocityY(-Toasty.JUMP_HEIGHT);
             this.canJump = false;
         }

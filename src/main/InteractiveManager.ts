@@ -1,7 +1,7 @@
 import { Toasty } from "./objects/Toasty";
 import { ScoreText } from "./ScoreText";
-import { CoinSet } from "./objects/CoinSet";
 import { Hill } from "./objects/Hill";
+import { Coin } from "./objects/Coin";
 
 export class InteractiveManager {
     private static readonly LEFTBOUNDS = -150;
@@ -11,8 +11,8 @@ export class InteractiveManager {
 
     private scene: Phaser.Scene;
     private maxScore: number;
+    private currentScore: number;
     private toasty: Toasty;
-    private coinSets: CoinSet[];
     private scoreText: ScoreText;
 
     /**
@@ -30,20 +30,20 @@ export class InteractiveManager {
         );
 
         this.maxScore = 0;
+        this.currentScore = 0;
+
+        this.scene.events.on("maxscore", this.handleMaxScore, this);
+        this.scene.events.on("collection", this.handleCollection, this);
+
         this.toasty = new Toasty(scene, scene.sys.canvas.width / 2, scene.sys.canvas.height / 3);
 
-        this.coinSets = new Array<CoinSet>();
-
-        this.coinSets.push(new CoinSet(scene, 3, 200, 300));
-        this.coinSets.push(new CoinSet(scene, 3, 1400, 300));
-
-        this.coinSets.forEach(coinSet => {
-            this.maxScore += coinSet.getOriginalSize();
-        });
+        this.createCoinRow(scene, 3, 200, 300);
+        this.createCoinRow(scene, 3, 1400, 300);
 
         new Hill(scene);
 
         this.scoreText = new ScoreText(scene, 200, 100);
+        this.scoreText.update(this.currentScore);
     }
 
     /**
@@ -51,15 +51,19 @@ export class InteractiveManager {
      */
     public update(): void {
         this.toasty.update();
-        let score = 0;
-        this.coinSets.forEach(coinSet => {
-            score += coinSet.update();
-        });
-        if (score >= this.maxScore) {
+    }
+
+    private handleMaxScore(amount: number): void {
+        this.maxScore += amount;
+    }
+
+    private handleCollection(amount: number): void {
+        this.currentScore += amount;
+        if (this.currentScore >= this.maxScore) {
             this.scene.scene.start("Credits");
         }
 
-        this.scoreText.update(score);
+        this.scoreText.update(this.currentScore);
     }
 
     /**
@@ -90,5 +94,12 @@ export class InteractiveManager {
             key: "coinSpin",
             repeat: -1,
         });
+    }
+
+    private createCoinRow(scene: Phaser.Scene, amount: number, x: number, y: number): void {
+        for (let i = 0; i < amount; i++) {
+            new Coin(scene, x, i, y);
+        }
+        scene.events.emit("maxscore", amount);
     }
 }

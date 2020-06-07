@@ -5,7 +5,6 @@ export class Coin {
     static readonly GAP = 10;
     scene: Phaser.Scene;
     coin: Phaser.Physics.Matter.Sprite;
-    collected: boolean;
     collectionSound: Phaser.Sound.BaseSound;
 
     /**
@@ -27,7 +26,6 @@ export class Coin {
         this.coin.setX(x + (this.coin.width + Coin.GAP) * offset);
         this.coin.setIgnoreGravity(true);
         this.setupCollisions(scene);
-        this.collected = false;
         this.coin.play("coinSpin", true);
         this.collectionSound = scene.sound.get("powerUp4");
     }
@@ -35,13 +33,7 @@ export class Coin {
     private collect(): void {
         this.coin.destroy();
         this.collectionSound.play();
-    }
-
-    public update(): boolean {
-        if (this.collected) {
-            this.collect();
-        }
-        return this.collected;
+        this.scene.events.emit("collection", 1);
     }
 
     /**
@@ -59,7 +51,7 @@ export class Coin {
                 bodyB: { gameObject: Phaser.Physics.Matter.Image },
             ) => {
                 if (bodyA.gameObject === this.coin || bodyB.gameObject === this.coin) {
-                    this.collected = true;
+                    this.collect();
                 }
             },
         );

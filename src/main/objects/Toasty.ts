@@ -43,7 +43,7 @@ export class Toasty {
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.setupCollisions(scene);
+        this.scene.events.on("bounce", this.handleBounce, this);
     }
 
     /**
@@ -77,24 +77,7 @@ export class Toasty {
         }
     }
 
-    /**
-     * Sets up the collision listener. Currently listening to set when Toasty can jump.
-     *
-     * @param scene - the scene to set the collisions on
-     */
-    private setupCollisions(scene: Phaser.Scene): void {
-        scene.matter.world.on(
-            "collisionstart",
-            (
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                _event: any,
-                bodyA: { gameObject: Phaser.Physics.Matter.Image },
-                bodyB: { gameObject: Phaser.Physics.Matter.Image },
-            ) => {
-                if (bodyA.gameObject === this.toasty || bodyB.gameObject === this.toasty) {
-                    this.canJump = true;
-                }
-            },
-        );
+    private handleBounce(): void {
+        this.canJump = true;
     }
 }

@@ -25,6 +25,7 @@ export class Coin {
         this.coin.setCircle(this.coin.width / 2, {});
         this.coin.setX(x + (this.coin.width + Coin.GAP) * offset);
         this.coin.setIgnoreGravity(true);
+        this.coin.setMass(0.0001); //Coin needs to be light so toasty isn't pushed back by the collision
         this.setupCollisions(scene);
         this.coin.play("coinSpin", true);
         this.collectionSound = scene.sound.get("powerUp4");

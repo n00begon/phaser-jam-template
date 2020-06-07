@@ -79,14 +79,12 @@ export class InteractiveManager {
     private setupAnimations(scene: Phaser.Scene): void {
         scene.anims.create({
             frameRate: 10,
-            frames: [
-                { key: "sprites", frame: "gold_1" },
-                { key: "sprites", frame: "gold_2" },
-                { key: "sprites", frame: "gold_3" },
-                { key: "sprites", frame: "gold_4" },
-                { key: "sprites", frame: "gold_5" },
-                { key: "sprites", frame: "gold_6" },
-            ],
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 6,
+                prefix: "gold_",
+            }),
+
             key: "coinSpin",
             repeat: -1,
         });

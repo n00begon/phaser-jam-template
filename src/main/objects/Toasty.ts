@@ -1,3 +1,5 @@
+import { EventsManager } from "../EventsManager";
+
 /**
  * Toasty is the character that the player controls.
  */
@@ -44,7 +46,7 @@ export class Toasty {
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.scene.events.on("bounce", this.handleBounce, this);
+        EventsManager.on("bounce", this.handleBounce, this);
     }
 
     /**

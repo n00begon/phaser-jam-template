@@ -15,6 +15,6 @@ export class UI extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the game
      */
     public create(): void {
-        new UIManager(this, this.scene.get("Main"));
+        new UIManager(this);
     }
 }

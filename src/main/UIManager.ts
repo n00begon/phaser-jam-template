@@ -1,4 +1,5 @@
 import { ScoreText } from "./ScoreText";
+import { EventsManager } from "./EventsManager";
 
 export class UIManager {
     private scoreText: ScoreText;
@@ -6,8 +7,8 @@ export class UIManager {
     /**
      * Adds the interactive objects to the scene
      */
-    constructor(scene: Phaser.Scene, gamescene: Phaser.Scene) {
-        gamescene.events.on("scoreChange", this.handleScoreChange, this);
+    constructor(scene: Phaser.Scene) {
+        EventsManager.on("scoreChange", this.handleScoreChange, this);
 
         this.scoreText = new ScoreText(scene, 200, 100);
         this.scoreText.update(0);

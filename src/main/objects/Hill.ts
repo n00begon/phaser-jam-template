@@ -1,3 +1,5 @@
+import { EventsManager } from "../EventsManager";
+
 /**
  * The hill is the static physics shape for Toasty to land on.
  */
@@ -30,7 +32,7 @@ export class Hill {
                 bodyB: { gameObject: Phaser.Physics.Matter.Image },
             ) => {
                 if (bodyA.gameObject === this.hill || bodyB.gameObject === this.hill) {
-                    scene.events.emit("bounce");
+                    EventsManager.emit("bounce");
                 }
             },
         );

@@ -1,7 +1,7 @@
 import { Toasty } from "./objects/Toasty";
 import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
-
+import { EventsManager } from "./EventsManager";
 export class InteractiveManager {
     private static readonly LEFTBOUNDS = -150;
     private static readonly RIGHTBOUNDS = 2000;
@@ -30,8 +30,8 @@ export class InteractiveManager {
         this.maxScore = 0;
         this.currentScore = 0;
 
-        this.scene.events.on("maxscore", this.handleMaxScore, this);
-        this.scene.events.on("collection", this.handleCollection, this);
+        EventsManager.on("maxscore", this.handleMaxScore, this);
+        EventsManager.on("collection", this.handleCollection, this);
 
         this.toasty = new Toasty(scene, scene.sys.canvas.width / 2, scene.sys.canvas.height / 3);
 
@@ -55,11 +55,11 @@ export class InteractiveManager {
     private handleCollection(amount: number): void {
         this.currentScore += amount;
         if (this.currentScore >= this.maxScore) {
-            this.scene.events.removeAllListeners("bounce");
+            EventsManager.removeAllListeners();
             this.scene.scene.start("Credits");
         }
 
-        this.scene.events.emit("scoreChange", this.currentScore);
+        EventsManager.emit("scoreChange", this.currentScore);
     }
 
     /**
@@ -96,6 +96,6 @@ export class InteractiveManager {
         for (let i = 0; i < amount; i++) {
             new Coin(scene, x, i, y);
         }
-        scene.events.emit("maxscore", amount);
+        EventsManager.emit("maxscore", amount);
     }
 }

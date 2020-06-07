@@ -13,9 +13,6 @@ export class ScoreText {
     }
 
     public update(score: number): void {
-        // Making sure the webfont texture has loaded correctly
-        if (this.text.frame.texture) {
-            this.text.setText(`Score: ${score}`);
-        }
+        this.text.setText(`Score: ${score}`);
     }
 }

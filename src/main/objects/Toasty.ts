@@ -10,7 +10,7 @@ export class Toasty {
     private scene: Phaser.Scene;
     private canJump = false;
     private currentSpeed = 0;
-
+    private lastY: number;
     private jumpKey: Phaser.Input.Keyboard.Key;
     private jumpKey2: Phaser.Input.Keyboard.Key;
     private leftKey: Phaser.Input.Keyboard.Key;
@@ -33,6 +33,7 @@ export class Toasty {
             // @ts-ignore
             shape: physicsShapes.toasty, //definitions does not have the shape in them
         });
+        this.lastY = y;
         this.toasty.setScale(0.8);
         this.toasty.setFriction(0);
         this.scene.cameras.main.startFollow(this.toasty);
@@ -75,9 +76,16 @@ export class Toasty {
             this.toasty.setVelocityY(-Toasty.JUMP_HEIGHT);
             this.canJump = false;
         }
+        this.lastY = this.toasty.y;
     }
 
     private handleBounce(): void {
         this.canJump = true;
+        if (this.toasty.y) {
+            const verticalSpeed = this.toasty.y - this.lastY;
+            if (verticalSpeed > 0) {
+                this.scene.cameras.main.shake(300, 0.0003 * verticalSpeed);
+            }
+        }
     }
 }

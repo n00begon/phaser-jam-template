@@ -55,6 +55,7 @@ export class InteractiveManager {
     private handleCollection(amount: number): void {
         this.currentScore += amount;
         if (this.currentScore >= this.maxScore) {
+            this.scene.events.removeAllListeners("bounce");
             this.scene.scene.start("Credits");
         }
 

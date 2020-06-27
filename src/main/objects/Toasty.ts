@@ -1,3 +1,5 @@
+import { EventsManager } from "../EventsManager";
+
 /**
  * Toasty is the character that the player controls.
  */
@@ -10,8 +12,9 @@ export class Toasty {
     private scene: Phaser.Scene;
     private canJump = false;
     private currentSpeed = 0;
-
+    private lastY: number;
     private jumpKey: Phaser.Input.Keyboard.Key;
+    private jumpKey2: Phaser.Input.Keyboard.Key;
     private leftKey: Phaser.Input.Keyboard.Key;
     private rightKey: Phaser.Input.Keyboard.Key;
     private leftKey2: Phaser.Input.Keyboard.Key;
@@ -32,16 +35,18 @@ export class Toasty {
             // @ts-ignore
             shape: physicsShapes.toasty, //definitions does not have the shape in them
         });
+        this.lastY = y;
         this.toasty.setScale(0.8);
         this.toasty.setFriction(0);
         this.scene.cameras.main.startFollow(this.toasty);
 
         this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.jumpKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.setupCollisions(scene);
+        EventsManager.on("bounce", this.handleBounce, this);
     }
 
     /**
@@ -69,30 +74,23 @@ export class Toasty {
             this.currentSpeed *= 0.95;
         }
 
-        if (this.jumpKey.isDown && this.canJump) {
+        if ((this.jumpKey.isDown || this.jumpKey2.isDown) && this.canJump) {
             this.toasty.setVelocityY(-Toasty.JUMP_HEIGHT);
             this.canJump = false;
         }
+        this.lastY = this.toasty.y;
     }
 
     /**
-     * Sets up the collision listener. Currently listening to set when Toasty can jump.
-     *
-     * @param scene - the scene to set the collisions on
+     * handles the juice when toasty lands.
      */
-    private setupCollisions(scene: Phaser.Scene): void {
-        scene.matter.world.on(
-            "collisionstart",
-            (
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                _event: any,
-                bodyA: { gameObject: Phaser.Physics.Matter.Image },
-                bodyB: { gameObject: Phaser.Physics.Matter.Image },
-            ) => {
-                if (bodyA.gameObject === this.toasty || bodyB.gameObject === this.toasty) {
-                    this.canJump = true;
-                }
-            },
-        );
+    private handleBounce(): void {
+        this.canJump = true;
+        if (this.toasty.y) {
+            const verticalSpeed = this.toasty.y - this.lastY;
+            if (verticalSpeed > 0) {
+                this.scene.cameras.main.shake(300, 0.0003 * verticalSpeed);
+            }
+        }
     }
 }

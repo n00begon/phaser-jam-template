@@ -1,3 +1,6 @@
+/**
+ * Wrap calculates the X position for objects moving off the screen
+ */
 export class Wrap {
     /**
      * Performs the calculations for an object to move off one side of the screen and wrap around to the other.

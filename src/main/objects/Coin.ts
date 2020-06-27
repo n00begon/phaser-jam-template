@@ -1,11 +1,12 @@
+import { EventsManager } from "../EventsManager";
+
 /**
- * Coint is an item for Toasty to collect.
+ * Coin is an item for Toasty to collect.
  */
 export class Coin {
     static readonly GAP = 10;
     scene: Phaser.Scene;
     coin: Phaser.Physics.Matter.Sprite;
-    collected: boolean;
     collectionSound: Phaser.Sound.BaseSound;
 
     /**
@@ -26,22 +27,19 @@ export class Coin {
         this.coin.setCircle(this.coin.width / 2, {});
         this.coin.setX(x + (this.coin.width + Coin.GAP) * offset);
         this.coin.setIgnoreGravity(true);
+        this.coin.setMass(0.0001); //Coin needs to be light so toasty isn't pushed back by the collision
         this.setupCollisions(scene);
-        this.collected = false;
         this.coin.play("coinSpin", true);
         this.collectionSound = scene.sound.get("powerUp4");
     }
 
+    /**
+     * The function which is called when the coin is collected. Emits "collection" to let listeners know this has happened.
+     */
     private collect(): void {
         this.coin.destroy();
         this.collectionSound.play();
-    }
-
-    public update(): boolean {
-        if (this.collected) {
-            this.collect();
-        }
-        return this.collected;
+        EventsManager.emit("collection", 1);
     }
 
     /**
@@ -59,7 +57,7 @@ export class Coin {
                 bodyB: { gameObject: Phaser.Physics.Matter.Image },
             ) => {
                 if (bodyA.gameObject === this.coin || bodyB.gameObject === this.coin) {
-                    this.collected = true;
+                    this.collect();
                 }
             },
         );

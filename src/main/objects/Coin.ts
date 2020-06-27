@@ -1,7 +1,7 @@
 import { EventsManager } from "../EventsManager";
 
 /**
- * Coint is an item for Toasty to collect.
+ * Coin is an item for Toasty to collect.
  */
 export class Coin {
     static readonly GAP = 10;
@@ -33,6 +33,9 @@ export class Coin {
         this.collectionSound = scene.sound.get("powerUp4");
     }
 
+    /**
+     * The function which is called when the coin is collected. Emits "collection" to let listeners know this has happened.
+     */
     private collect(): void {
         this.coin.destroy();
         this.collectionSound.play();

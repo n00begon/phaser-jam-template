@@ -2,6 +2,10 @@ import { Toasty } from "./objects/Toasty";
 import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
 import { EventsManager } from "./EventsManager";
+/**
+ * InteractiveManager controls the interactive game objects and player interaction.
+ * The core game logic is controlled from here
+ */
 export class InteractiveManager {
     private static readonly LEFTBOUNDS = -150;
     private static readonly RIGHTBOUNDS = 2000;
@@ -48,10 +52,21 @@ export class InteractiveManager {
         this.toasty.update();
     }
 
+    /**
+     * Keeps track of the maximum score
+     *
+     * @param amount - the change in maximum score
+     */
     private handleMaxScore(amount: number): void {
         this.maxScore += amount;
     }
 
+    /**
+     * Keeps track of score changes. Ends the game when the current score
+     * reaches the maximum score.
+     *
+     * @param amount - the amount of score collected
+     */
     private handleCollection(amount: number): void {
         this.currentScore += amount;
         if (this.currentScore >= this.maxScore) {
@@ -76,6 +91,11 @@ export class InteractiveManager {
         ); // Stops the camera moving off the edge of the screen
     }
 
+    /**
+     * Sets up the animations for game objects so that they are only created once
+     *
+     * @param scene - the scene to add the animation to
+     */
     private setupAnimations(scene: Phaser.Scene): void {
         scene.anims.create({
             frameRate: 10,
@@ -90,6 +110,14 @@ export class InteractiveManager {
         });
     }
 
+    /**
+     * Creates a row of coins in a location
+     *
+     * @param scene - the scene to add the coins to
+     * @param amount - the number of coins to add
+     * @param x - the x position of the first coin
+     * @param y - the y position for the coins
+     */
     private createCoinRow(scene: Phaser.Scene, amount: number, x: number, y: number): void {
         for (let i = 0; i < amount; i++) {
             new Coin(scene, x, i, y);

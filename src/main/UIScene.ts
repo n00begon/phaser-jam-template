@@ -1,7 +1,7 @@
 import { UIManager } from "./UIManager";
 
 /**
- * Main is the gameplay scene where the main gameplay loop takes place.
+ * UI is a scene overlayed on the main scene to hold all the user interface components
  */
 export class UI extends Phaser.Scene {
     /**
@@ -12,7 +12,7 @@ export class UI extends Phaser.Scene {
     }
 
     /**
-     * Create is called when the scene is loaded and sets up the game
+     * Create is called when the scene is loaded
      */
     public create(): void {
         new UIManager(this);

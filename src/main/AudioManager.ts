@@ -1,3 +1,6 @@
+/**
+ * Audio manager controls adding audio to the scene and the background music
+ */
 export class AudioManager {
     /**
      * Adds the audio to the scene and starts the background music

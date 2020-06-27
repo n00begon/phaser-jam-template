@@ -3,7 +3,7 @@ import { InteractiveManager } from "./InteractiveManager";
 import { BackgroundManager } from "./BackgroundManager";
 
 /**
- * Main is the gameplay scene where the main gameplay loop takes place.
+ * Main is the gameplay scene which calls the managers to control different aspects of the game
  */
 export class Main extends Phaser.Scene {
     private interactiveManager!: InteractiveManager;

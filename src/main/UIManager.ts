@@ -1,6 +1,9 @@
 import { ScoreText } from "./ScoreText";
 import { EventsManager } from "./EventsManager";
 
+/**
+ * UIManager controls the user interface elements displayed to the user
+ */
 export class UIManager {
     private scoreText: ScoreText;
 

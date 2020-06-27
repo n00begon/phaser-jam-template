@@ -81,6 +81,9 @@ export class Toasty {
         this.lastY = this.toasty.y;
     }
 
+    /**
+     * handles the juice when toasty lands.
+     */
     private handleBounce(): void {
         this.canJump = true;
         if (this.toasty.y) {

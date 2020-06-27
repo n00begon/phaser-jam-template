@@ -1,5 +1,8 @@
 import { CreditText } from "./CreditText";
 
+/**
+ * Credits is the final scene where the showing credits about the game
+ */
 export class Credits extends Phaser.Scene {
     private textList = new Array<CreditText>(5);
 
@@ -10,12 +13,15 @@ export class Credits extends Phaser.Scene {
         super("Credits");
     }
 
+    /**
+     * Sets the background colour for the scene
+     */
     public preload(): void {
         this.cameras.main.setBackgroundColor("#000000");
     }
 
     /**
-     * Create is called when the scene is loaded and sets up the game
+     * Create is called when the scene is loaded and sets up the credits list
      */
     public create(): void {
         const top = 200;
@@ -65,7 +71,7 @@ export class Credits extends Phaser.Scene {
     }
 
     /**
-     * The main update loop for the scene.
+     * The update loop gets the text to appear on screen
      */
     public update(): void {
         this.textList.forEach(displayText => {

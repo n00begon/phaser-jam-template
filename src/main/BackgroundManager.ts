@@ -1,3 +1,6 @@
+/**
+ * Background manager controls the non interactive background objects
+ */
 export class BackgroundManager {
     /**
      * Adds the parallax background to the scene

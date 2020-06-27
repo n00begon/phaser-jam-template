@@ -1,5 +1,25 @@
 # Change Log
 
+## Version 1.2.0 26th June 2020
+
+Refactored to make the code more modular and easier to adapt to a new game.
+
+### New Features
+
+-   Rearranged the code into scene folders for a easier to modify layout
+-   Moved objects out of the main scene into managers. This makes it easier to modify components without affecting the rest of the game and makes better use of TypeScript's checking.
+-   Changed to event emitting to decouple components. Examples are collisions and coin collecting.
+-   Shifted the UI to its own scene so it is unaffected by gameplay
+
+### Updates
+
+-   The coin animation now generates the frame names
+-   Minor dependency updates
+
+### Bug Fixes
+
+-   Fixed issue where you could jump off coins. Now you can only jump off the hill.
+
 ## Version 1.1 13th May 2020
 
 Added collecting items, credits screen and sound effects

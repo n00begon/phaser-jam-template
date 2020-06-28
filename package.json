@@ -33,7 +33,7 @@
     "dependencies": {
         "@types/webfontloader": "^1.6.31",
         "phaser": "^3.23.0",
-        "snyk": "^1.323.0",
+        "snyk": "^1.336.0",
         "webfontloader": "^1.6.28"
     },
     "devDependencies": {

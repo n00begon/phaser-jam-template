@@ -6,9 +6,9 @@ import { EventsManager } from "../EventsManager";
 export class Hill {
     private hill: Phaser.Physics.Matter.Image;
 
-    constructor(scene: Phaser.Scene) {
+    constructor(scene: Phaser.Scene, centerX: number) {
         const physicsShapes = scene.cache.json.get("physicsShapes");
-        this.hill = scene.matter.add.image(scene.sys.canvas.width / 2, scene.sys.canvas.height, "sprites", "hill", {
+        this.hill = scene.matter.add.image(centerX, 800, "sprites", "hill", {
             // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
             // @ts-ignore
             shape: physicsShapes.hill, //definitions does not have the shape in them

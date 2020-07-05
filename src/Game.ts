@@ -16,12 +16,18 @@ const config: Phaser.Types.Core.GameConfig = {
     physics: {
         default: "matter",
         matter: {
-            debug: false, // This displays the physics boxes
+            debug: true, // This displays the physics boxes
             gravity: {
                 x: 0,
                 y: 1,
             },
         },
+    },
+
+    scale: {
+        mode: Phaser.Scale.RESIZE,
+        width: "100%",
+        height: "100%",
     },
 };
 

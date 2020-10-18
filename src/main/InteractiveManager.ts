@@ -2,6 +2,8 @@ import { Toasty } from "./objects/Toasty";
 import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
 import { EventsManager } from "./EventsManager";
+import { ControlManager } from "./ControlManager";
+
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
  * The core game logic is controlled from here
@@ -15,6 +17,7 @@ export class InteractiveManager {
     private static readonly WORLDHEIGHT = InteractiveManager.BOTTOMBOUNDS - InteractiveManager.TOPBOUNDS;
 
     private scene: Phaser.Scene;
+    private controlManager: ControlManager;
     private maxScore: number;
     private currentScore: number;
     private toasty: Toasty;
@@ -24,6 +27,7 @@ export class InteractiveManager {
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
+        this.controlManager = new ControlManager(scene);
         this.setupAnimations(scene);
         this.setupCamera(scene);
         scene.matter.world.setBounds(
@@ -51,6 +55,7 @@ export class InteractiveManager {
      * The main update loop for the scene.
      */
     public update(): void {
+        this.controlManager.update();
         this.toasty.update();
     }
 

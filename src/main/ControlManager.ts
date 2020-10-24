@@ -1,4 +1,4 @@
-import { EventsManager } from "./EventsManager";
+import { MainEventsManager } from "./MainEventsManager";
 /**
  * ControlManager collects interactions with the player and emits them as events.
  * This lets things that need to end up as the same action be mapped to different keys
@@ -40,28 +40,28 @@ export class ControlManager {
         });
     }
 
-    update(): void {
+    update(playerX: number): void {
         if (this.leftKey.isDown || this.leftKey2.isDown) {
-            EventsManager.emit("leftMove");
+            MainEventsManager.emit("leftMove");
         }
 
         if (this.rightKey.isDown || this.rightKey2.isDown) {
-            EventsManager.emit("rightMove");
+            MainEventsManager.emit("rightMove");
         }
 
         if (this.jumpKey.isDown) {
-            EventsManager.emit("jumpMove");
+            MainEventsManager.emit("jumpMove");
         }
 
         if (this.currentTouch) {
-            if (this.touchX < this.scene.game.canvas.width / 2) {
-                EventsManager.emit("leftMove");
+            if (this.touchX < playerX) {
+                MainEventsManager.emit("leftMove");
             } else {
-                EventsManager.emit("rightMove");
+                MainEventsManager.emit("rightMove");
             }
 
             if (this.touchY < this.scene.game.canvas.height / 2) {
-                EventsManager.emit("jumpMove");
+                MainEventsManager.emit("jumpMove");
             }
         }
     }

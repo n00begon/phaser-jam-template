@@ -1,4 +1,4 @@
-import { EventsManager } from "../EventsManager";
+import { MainEventsManager } from "../MainEventsManager";
 
 /**
  * Toasty is the character that the player controls.
@@ -37,10 +37,10 @@ export class Toasty {
         this.toasty.setFriction(0);
         this.scene.cameras.main.startFollow(this.toasty);
 
-        EventsManager.on("bounce", this.handleBounce, this);
-        EventsManager.on("leftMove", this.handleLeftMove, this);
-        EventsManager.on("rightMove", this.handleRightMove, this);
-        EventsManager.on("jumpMove", this.handleJumpMove, this);
+        MainEventsManager.on("bounce", this.handleBounce, this);
+        MainEventsManager.on("leftMove", this.handleLeftMove, this);
+        MainEventsManager.on("rightMove", this.handleRightMove, this);
+        MainEventsManager.on("jumpMove", this.handleJumpMove, this);
     }
 
     /**
@@ -76,6 +76,10 @@ export class Toasty {
         this.leftMove = false;
         this.rightMove = false;
         this.jumpMove = false;
+    }
+
+    public getX(): number {
+        return this.toasty.x;
     }
 
     /**

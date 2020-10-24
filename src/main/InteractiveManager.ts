@@ -1,7 +1,7 @@
 import { Toasty } from "./objects/Toasty";
 import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
-import { EventsManager } from "./EventsManager";
+import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 
 /**
@@ -40,8 +40,8 @@ export class InteractiveManager {
         this.maxScore = 0;
         this.currentScore = 0;
 
-        EventsManager.on("maxscore", this.handleMaxScore, this);
-        EventsManager.on("collection", this.handleCollection, this);
+        MainEventsManager.on("maxscore", this.handleMaxScore, this);
+        MainEventsManager.on("collection", this.handleCollection, this);
 
         this.toasty = new Toasty(scene, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 500);
 
@@ -55,8 +55,8 @@ export class InteractiveManager {
      * The main update loop for the scene.
      */
     public update(): void {
-        this.controlManager.update();
         this.toasty.update();
+        this.controlManager.update(this.toasty.getX());
     }
 
     /**
@@ -77,11 +77,11 @@ export class InteractiveManager {
     private handleCollection(amount: number): void {
         this.currentScore += amount;
         if (this.currentScore >= this.maxScore) {
-            EventsManager.removeAllListeners();
+            MainEventsManager.removeAllListeners();
             this.scene.scene.start("Credits");
         }
 
-        EventsManager.emit("scoreChange", this.currentScore);
+        MainEventsManager.emit("scoreChange", this.currentScore);
     }
 
     /**
@@ -129,6 +129,6 @@ export class InteractiveManager {
         for (let i = 0; i < amount; i++) {
             new Coin(scene, x, i, y);
         }
-        EventsManager.emit("maxscore", amount);
+        MainEventsManager.emit("maxscore", amount);
     }
 }

@@ -1,5 +1,5 @@
 import { ScoreText } from "./ScoreText";
-import { EventsManager } from "./EventsManager";
+import { MainEventsManager } from "./MainEventsManager";
 
 /**
  * UIManager controls the user interface elements displayed to the user
@@ -11,7 +11,7 @@ export class UIManager {
      * Adds the interactive objects to the scene
      */
     constructor(scene: Phaser.Scene) {
-        EventsManager.on("scoreChange", this.handleScoreChange, this);
+        MainEventsManager.on("scoreChange", this.handleScoreChange, this);
 
         this.scoreText = new ScoreText(scene, 200, 100);
         this.scoreText.update(0);

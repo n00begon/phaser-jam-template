@@ -4,7 +4,8 @@ import { CreditsEventsManager } from "./CreditsEventsManager";
 /**
  * CreditText is WebFont text which fades in after a set amount of time
  */
-export class CreditText extends ScalableText {
+export class CreditText {
+    private text: ScalableText;
     private wait: number;
     /**
      * The constructor sets up the CreditText
@@ -16,12 +17,19 @@ export class CreditText extends ScalableText {
      * @param fontSize - the size of the font for this credit text
      */
     constructor(scene: Phaser.Scene, words: string, yScale: number, wait: number, fontSize: number) {
-        super(scene, scene.sys.canvas.width / 2, yScale * scene.game.canvas.height, CreditsEventsManager);
-        this.text.setStyle({
-            fontFamily: "Chewy",
-            fontSize: fontSize,
-            color: "#EB4786",
-        });
+        this.text = new ScalableText(
+            scene,
+            scene.sys.canvas.width / 2,
+            yScale * scene.game.canvas.height,
+            {
+                fontFamily: "Chewy",
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore: TS2322
+                fontSize: fontSize,
+                color: "#EB4786",
+            },
+            CreditsEventsManager,
+        );
         this.text.setText(words);
         this.text.alpha = 0;
         this.text.setAlign("center");

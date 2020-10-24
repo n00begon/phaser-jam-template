@@ -4,7 +4,9 @@ import { MainEventsManager } from "./MainEventsManager";
 /**
  * Score text is the text object which displays the score on the screne
  */
-export class ScoreText extends ScalableText {
+export class ScoreText {
+    private text: ScalableText;
+
     /**
      * Creates the score text in a fixed location relative to the screen
      *
@@ -13,12 +15,19 @@ export class ScoreText extends ScalableText {
      * @param y - the y position to create the score text at
      */
     constructor(scene: Phaser.Scene, x: number, y: number) {
-        super(scene, x, y, MainEventsManager);
-        this.text.setStyle({
-            fontFamily: "Chewy",
-            fontSize: 100,
-            color: "#EB4786",
-        });
+        this.text = new ScalableText(
+            scene,
+            x,
+            y,
+            {
+                fontFamily: "Chewy",
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore: TS2322
+                fontSize: 100,
+                color: "#EB4786",
+            },
+            MainEventsManager,
+        );
 
         this.text.setAlign("left");
         this.text.setOrigin(0, 0);

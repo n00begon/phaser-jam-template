@@ -26,8 +26,14 @@ export class ScalableText {
     private handleResize(gameSize: Phaser.Structs.Size): void {
         const xScale = gameSize.width / this.originalScaleWidth;
         const yScale = gameSize.height / this.originalScaleHeight;
-        this.text.setScale(xScale);
-        this.text.setX(gameSize.width / 2);
+        this.text.setScale(Math.min(xScale, yScale));
+
+        if (this.originalX === this.originalScaleWidth / 2) {
+            this.text.setX(gameSize.width / 2);
+        } else {
+            this.text.setX(Math.min(xScale, yScale) * this.originalX);
+        }
+
         this.text.setY(Math.min(xScale, yScale) * this.originalY);
     }
 }

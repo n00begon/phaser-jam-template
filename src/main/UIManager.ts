@@ -13,7 +13,7 @@ export class UIManager {
     constructor(scene: Phaser.Scene) {
         MainEventsManager.on("scoreChange", this.handleScoreChange, this);
 
-        this.scoreText = new ScoreText(scene, 200, 100);
+        this.scoreText = new ScoreText(scene, 30, 30);
         this.scoreText.update(0);
     }
 

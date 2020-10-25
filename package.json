@@ -32,7 +32,7 @@
     },
     "dependencies": {
         "@types/webfontloader": "^1.6.32",
-        "phaser": "^3.24.0",
+        "phaser": "^3.24.1",
         "snyk": "^1.336.0",
         "webfontloader": "^1.6.28"
     },

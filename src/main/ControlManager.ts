@@ -12,7 +12,7 @@ export class ControlManager {
     private rightKey2: Phaser.Input.Keyboard.Key;
     private touchX = 0;
     private touchY = 0;
-    private currentTouch = false;
+    private currentPointer!: Phaser.Input.Pointer | null;
     private scene: Phaser.Scene;
 
     /**
@@ -28,19 +28,15 @@ export class ControlManager {
         this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-            this.touchX = pointer.x;
-            this.touchY = pointer.y;
-            this.currentTouch = true;
+            this.currentPointer = pointer;
         });
 
-        scene.input.on("pointerup", (pointer: Phaser.Input.Pointer) => {
-            this.touchX = pointer.x;
-            this.touchY = pointer.y;
-            this.currentTouch = false;
+        scene.input.on("pointerup", () => {
+            this.currentPointer = null;
         });
     }
 
-    update(playerX: number): void {
+    update(): void {
         if (this.leftKey.isDown || this.leftKey2.isDown) {
             MainEventsManager.emit("leftMove");
         }
@@ -53,14 +49,14 @@ export class ControlManager {
             MainEventsManager.emit("jumpMove");
         }
 
-        if (this.currentTouch) {
-            if (this.touchX < playerX) {
+        if (this.currentPointer?.isDown) {
+            if (this.currentPointer.x < this.scene.cameras.main.displayWidth / 2) {
                 MainEventsManager.emit("leftMove");
             } else {
                 MainEventsManager.emit("rightMove");
             }
 
-            if (this.touchY < this.scene.game.canvas.height / 2) {
+            if (this.currentPointer.y < this.scene.cameras.main.displayHeight / 2) {
                 MainEventsManager.emit("jumpMove");
             }
         }

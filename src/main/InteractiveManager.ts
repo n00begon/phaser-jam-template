@@ -56,7 +56,7 @@ export class InteractiveManager {
      */
     public update(): void {
         this.toasty.update();
-        this.controlManager.update(this.toasty.getX());
+        this.controlManager.update();
     }
 
     /**

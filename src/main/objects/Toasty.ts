@@ -78,10 +78,6 @@ export class Toasty {
         this.jumpMove = false;
     }
 
-    public getX(): number {
-        return this.toasty.x;
-    }
-
     /**
      * handles the juice when toasty lands.
      */

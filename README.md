@@ -19,7 +19,7 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 
 </div>
 
-Try out the [live game](https://n00begon.com/games/toasty/) to see what you will start with.
+Try out the [live game](https://n00begon.com/games/toasty/) to see what you will start with. See the recent updates in the [change log](CHANGELOG.md)
 
 ## Getting Started
 

@@ -1,5 +1,6 @@
 import { LoadingBar } from "./LoadingBar";
 import * as WebFontLoader from "webfontloader";
+import { GameSettings } from "../utilities/GameSettings";
 
 /**
  * Preloader scene loads all the assets for the main game
@@ -78,7 +79,7 @@ export class Preloader extends Phaser.Scene {
     private loadFonts(): void {
         WebFontLoader.load({
             google: {
-                families: ["Chewy"],
+                families: [GameSettings.DISPLAY_FONT],
             },
         });
     }

@@ -1,3 +1,4 @@
+import { GameSettings } from "../utilities/GameSettings";
 import { ScalableText } from "../utilities/ScalableText";
 import { MainEventsManager } from "./MainEventsManager";
 
@@ -20,7 +21,7 @@ export class ScoreText {
             x,
             y,
             {
-                fontFamily: "Chewy",
+                fontFamily: GameSettings.DISPLAY_FONT,
                 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                 // @ts-ignore: TS2322
                 fontSize: 100,

@@ -1,3 +1,4 @@
+import { GameSettings } from "../utilities/GameSettings";
 import { ScalableText } from "../utilities/ScalableText";
 import { CreditsEventsManager } from "./CreditsEventsManager";
 
@@ -22,7 +23,7 @@ export class CreditText {
             scene.sys.canvas.width / 2,
             yScale * scene.game.canvas.height,
             {
-                fontFamily: "Chewy",
+                fontFamily: GameSettings.DISPLAY_FONT,
                 // The type definition has this as a string but it works as a number
                 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                 // @ts-ignore: TS2322

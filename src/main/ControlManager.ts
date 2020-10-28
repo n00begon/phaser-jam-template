@@ -36,6 +36,9 @@ export class ControlManager {
         });
     }
 
+    /**
+     * Checks what keys are down this update cycle and emits events based on it.
+     */
     update(): void {
         if (this.leftKey.isDown || this.leftKey2.isDown) {
             MainEventsManager.emit("leftMove");

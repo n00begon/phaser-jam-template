@@ -101,6 +101,12 @@ export class Credits extends Phaser.Scene {
         });
     }
 
+    /**
+     * Resize gets called when the screen is resized. It fires off an event for the other
+     * credits objects to respond to
+     *
+     * @param gameSize - the new size of the screen
+     */
     private resize(gameSize: Phaser.Structs.Size): void {
         CreditsEventsManager.emit("resize", gameSize);
     }

@@ -8,6 +8,10 @@ export class LoadingBar {
     private static readonly BOX_HEIGHT = 50;
     private static readonly BAR_OFFSET = 10;
 
+    /**
+     * Creates a new loading bar which has a Box color and a bar color.
+     * @param scene - the scene to add the loading bar graphics to.
+     */
     public constructor(scene: Phaser.Scene) {
         const progressBar = scene.add.graphics();
         const progressBox = scene.add.graphics();
@@ -19,6 +23,7 @@ export class LoadingBar {
             LoadingBar.BOX_HEIGHT,
         );
 
+        // When progress has been made loading the assets the loading bar is updated.
         scene.load.on("progress", (progress: number) => {
             progressBar.fillStyle(LoadingBar.PROGRESS_BAR_COLOR, 1);
             progressBar.fillRect(

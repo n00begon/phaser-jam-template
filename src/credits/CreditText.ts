@@ -23,6 +23,7 @@ export class CreditText {
             yScale * scene.game.canvas.height,
             {
                 fontFamily: "Chewy",
+                // The type definition has this as a string but it works as a number
                 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                 // @ts-ignore: TS2322
                 fontSize: fontSize,
@@ -37,6 +38,9 @@ export class CreditText {
         this.wait = wait;
     }
 
+    /**
+     * Fades in the text. When the text is fully displayed it returns true otherwise false.
+     */
     public update(): boolean {
         if (this.wait > 0) {
             this.wait--;

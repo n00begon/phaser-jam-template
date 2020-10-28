@@ -72,6 +72,9 @@ export class Preloader extends Phaser.Scene {
         }
     }
 
+    /**
+     * Loads the webfonts.
+     */
     private loadFonts(): void {
         WebFontLoader.load({
             google: {

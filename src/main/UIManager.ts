@@ -17,6 +17,10 @@ export class UIManager {
         this.scoreText.update(0);
     }
 
+    /**
+     * Handles score change by updating the score UI text
+     * @param amount - the amount the score is now
+     */
     private handleScoreChange(amount: number): void {
         this.scoreText.update(amount);
     }

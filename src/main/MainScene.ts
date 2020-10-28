@@ -35,6 +35,12 @@ export class Main extends Phaser.Scene {
         this.interactiveManager.update();
     }
 
+    /**
+     * Resize gets called when the screen is resized. It fires off an event for the other
+     * game objects to respond to
+     *
+     * @param gameSize - the new size of the screen
+     */
     private resize(gameSize: Phaser.Structs.Size): void {
         MainEventsManager.emit("resize", gameSize);
     }

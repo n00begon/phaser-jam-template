@@ -25,6 +25,10 @@ export class ScalableText extends Phaser.GameObjects.Text {
         eventManager.on("resize", this.handleResize, this);
     }
 
+    /**
+     * Handles a resize event by using the scaler to calculate the new font size, x and y positions.
+     * @param gameSize - a Phaser Struct of the new game window size.
+     */
     private handleResize(gameSize: Phaser.Structs.Size): void {
         const result = this.scaler.scale(gameSize);
         this.setScale(result.mainScale);

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack/devconfig.js --env dev",
     "build": "webpack --config webpack/prodconfig.js --env prod",
-    "test": "snyk test && jest",
+    "test": "jest",
     "lint": "eslint \"src/**\" --fix . . --ext .ts",
     "security-test": "snyk test",
     "snyk-protect": "snyk protect",

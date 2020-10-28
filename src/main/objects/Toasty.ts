@@ -1,4 +1,4 @@
-import { EventsManager } from "../EventsManager";
+import { MainEventsManager } from "../MainEventsManager";
 
 /**
  * Toasty is the character that the player controls.
@@ -13,12 +13,9 @@ export class Toasty {
     private canJump = false;
     private currentSpeed = 0;
     private lastY: number;
-    private jumpKey: Phaser.Input.Keyboard.Key;
-    private jumpKey2: Phaser.Input.Keyboard.Key;
-    private leftKey: Phaser.Input.Keyboard.Key;
-    private rightKey: Phaser.Input.Keyboard.Key;
-    private leftKey2: Phaser.Input.Keyboard.Key;
-    private rightKey2: Phaser.Input.Keyboard.Key;
+    private leftMove = false;
+    private rightMove = false;
+    private jumpMove = false;
 
     /**
      * Creates the toasty object
@@ -40,25 +37,22 @@ export class Toasty {
         this.toasty.setFriction(0);
         this.scene.cameras.main.startFollow(this.toasty);
 
-        this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        this.jumpKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        EventsManager.on("bounce", this.handleBounce, this);
+        MainEventsManager.on("bounce", this.handleBounce, this);
+        MainEventsManager.on("leftMove", this.handleLeftMove, this);
+        MainEventsManager.on("rightMove", this.handleRightMove, this);
+        MainEventsManager.on("jumpMove", this.handleJumpMove, this);
     }
 
     /**
-     * The update cycle. This is listening for key presses and controlling the movement
+     * The update cycle.This is controlling the movement
      */
     public update(): void {
         let direction = 0;
-        if (this.leftKey.isDown || this.leftKey2.isDown) {
+        if (this.leftMove) {
             direction = -1;
         }
 
-        if (this.rightKey.isDown || this.rightKey2.isDown) {
+        if (this.rightMove) {
             direction = 1;
         }
 
@@ -74,11 +68,14 @@ export class Toasty {
             this.currentSpeed *= 0.95;
         }
 
-        if ((this.jumpKey.isDown || this.jumpKey2.isDown) && this.canJump) {
+        if (this.jumpMove && this.canJump) {
             this.toasty.setVelocityY(-Toasty.JUMP_HEIGHT);
             this.canJump = false;
         }
         this.lastY = this.toasty.y;
+        this.leftMove = false;
+        this.rightMove = false;
+        this.jumpMove = false;
     }
 
     /**
@@ -92,5 +89,26 @@ export class Toasty {
                 this.scene.cameras.main.shake(300, 0.0003 * verticalSpeed);
             }
         }
+    }
+
+    /**
+     * handles when it receives a left move event.
+     */
+    private handleLeftMove(): void {
+        this.leftMove = true;
+    }
+
+    /**
+     * handles when it receives a right move event.
+     */
+    private handleRightMove(): void {
+        this.rightMove = true;
+    }
+
+    /**
+     * handles when it receives a jump move event.
+     */
+    private handleJumpMove(): void {
+        this.jumpMove = true;
     }
 }

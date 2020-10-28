@@ -1,5 +1,26 @@
 # Change Log
 
+## Version 1.3.0 28th October 2020
+
+Added support for resizing the screen size to fit different devices and mobile touch controls.
+
+### New Features
+
+-   Scenes now listen to resize events from Phaser
+-   Text has now been wrapped in a ScalableText object which handles the scaling. It matches the size and layout on the original screen size.
+-   A new Class ControlManager now handles all the input from the player and sends events of the actions taking place. This allows the game objects to deal with abstract actions such as "Move Left" which can be mapped onto key presses and touches in the Control Manager.
+
+### Updates
+
+-   The background art now uses Tiles so they repeat.
+-   Phaser updated to 3.24
+-   Minor dependency updates
+
+### Bug Fixes
+
+-   The Score UI position has been moved to a better place
+-   Various small fixes recommended by SonarQube
+
 ## Version 1.2.0 26th June 2020
 
 Refactored to make the code more modular and easier to adapt to a new game.

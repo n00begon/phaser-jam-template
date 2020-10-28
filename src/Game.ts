@@ -23,6 +23,12 @@ const config: Phaser.Types.Core.GameConfig = {
             },
         },
     },
+
+    scale: {
+        mode: Phaser.Scale.RESIZE,
+        width: "100%",
+        height: "100%",
+    },
 };
 
 new Phaser.Game(config);

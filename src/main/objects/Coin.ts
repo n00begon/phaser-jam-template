@@ -1,4 +1,4 @@
-import { EventsManager } from "../EventsManager";
+import { MainEventsManager } from "../MainEventsManager";
 
 /**
  * Coin is an item for Toasty to collect.
@@ -39,7 +39,7 @@ export class Coin {
     private collect(): void {
         this.coin.destroy();
         this.collectionSound.play();
-        EventsManager.emit("collection", 1);
+        MainEventsManager.emit("collection", 1);
     }
 
     /**

@@ -1,8 +1,12 @@
+import { GameSettings } from "../utilities/GameSettings";
+import { ScalableText } from "../utilities/ScalableText";
+import { MainEventsManager } from "./MainEventsManager";
+
 /**
  * Score text is the text object which displays the score on the screne
  */
 export class ScoreText {
-    public text: Phaser.GameObjects.Text;
+    private text: ScalableText;
 
     /**
      * Creates the score text in a fixed location relative to the screen
@@ -12,11 +16,19 @@ export class ScoreText {
      * @param y - the y position to create the score text at
      */
     constructor(scene: Phaser.Scene, x: number, y: number) {
-        this.text = scene.add.text(x, y, "", {
-            fontFamily: "Chewy",
-            fontSize: 100,
-            color: "#EB4786",
-        });
+        this.text = new ScalableText(
+            scene,
+            x,
+            y,
+            {
+                fontFamily: GameSettings.DISPLAY_FONT,
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore: TS2322
+                fontSize: 100,
+                color: "#EB4786",
+            },
+            MainEventsManager,
+        );
 
         this.text.setAlign("left");
         this.text.setOrigin(0, 0);

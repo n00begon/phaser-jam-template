@@ -1,18 +1,23 @@
 import { Toasty } from "./objects/Toasty";
 import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
-import { EventsManager } from "./EventsManager";
+import { MainEventsManager } from "./MainEventsManager";
+import { ControlManager } from "./ControlManager";
+
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
  * The core game logic is controlled from here
  */
 export class InteractiveManager {
-    private static readonly LEFTBOUNDS = -150;
-    private static readonly RIGHTBOUNDS = 2000;
-    private static readonly TOPBOUNDS = -200;
-    private static readonly BOTTOMBOUNDS = 1300;
+    private static readonly LEFTBOUNDS = 0;
+    private static readonly RIGHTBOUNDS = 2010;
+    private static readonly TOPBOUNDS = -500;
+    private static readonly BOTTOMBOUNDS = 800;
+    private static readonly WORLDWIDTH = InteractiveManager.RIGHTBOUNDS - InteractiveManager.LEFTBOUNDS;
+    private static readonly WORLDHEIGHT = InteractiveManager.BOTTOMBOUNDS - InteractiveManager.TOPBOUNDS;
 
     private scene: Phaser.Scene;
+    private controlManager: ControlManager;
     private maxScore: number;
     private currentScore: number;
     private toasty: Toasty;
@@ -22,27 +27,28 @@ export class InteractiveManager {
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
+        this.controlManager = new ControlManager(scene);
         this.setupAnimations(scene);
         this.setupCamera(scene);
         scene.matter.world.setBounds(
             InteractiveManager.LEFTBOUNDS,
             InteractiveManager.TOPBOUNDS,
-            InteractiveManager.RIGHTBOUNDS,
-            InteractiveManager.BOTTOMBOUNDS,
+            InteractiveManager.WORLDWIDTH,
+            InteractiveManager.WORLDHEIGHT,
         );
 
         this.maxScore = 0;
         this.currentScore = 0;
 
-        EventsManager.on("maxscore", this.handleMaxScore, this);
-        EventsManager.on("collection", this.handleCollection, this);
+        MainEventsManager.on("maxscore", this.handleMaxScore, this);
+        MainEventsManager.on("collection", this.handleCollection, this);
 
-        this.toasty = new Toasty(scene, scene.sys.canvas.width / 2, scene.sys.canvas.height / 3);
+        this.toasty = new Toasty(scene, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 500);
 
-        this.createCoinRow(scene, 3, 200, 300);
-        this.createCoinRow(scene, 3, 1400, 300);
+        this.createCoinRow(scene, 3, InteractiveManager.WORLDWIDTH / 4, InteractiveManager.BOTTOMBOUNDS - 700);
+        this.createCoinRow(scene, 3, (InteractiveManager.WORLDWIDTH / 4) * 3, InteractiveManager.BOTTOMBOUNDS - 700);
 
-        new Hill(scene);
+        new Hill(scene, InteractiveManager.WORLDWIDTH / 2 - 50);
     }
 
     /**
@@ -50,6 +56,7 @@ export class InteractiveManager {
      */
     public update(): void {
         this.toasty.update();
+        this.controlManager.update();
     }
 
     /**
@@ -70,11 +77,11 @@ export class InteractiveManager {
     private handleCollection(amount: number): void {
         this.currentScore += amount;
         if (this.currentScore >= this.maxScore) {
-            EventsManager.removeAllListeners();
+            MainEventsManager.removeAllListeners();
             this.scene.scene.start("Credits");
         }
 
-        EventsManager.emit("scoreChange", this.currentScore);
+        MainEventsManager.emit("scoreChange", this.currentScore);
     }
 
     /**
@@ -86,8 +93,8 @@ export class InteractiveManager {
         scene.cameras.main.setBounds(
             InteractiveManager.LEFTBOUNDS,
             InteractiveManager.TOPBOUNDS,
-            InteractiveManager.RIGHTBOUNDS,
-            InteractiveManager.BOTTOMBOUNDS,
+            InteractiveManager.WORLDWIDTH,
+            InteractiveManager.WORLDHEIGHT,
         ); // Stops the camera moving off the edge of the screen
     }
 
@@ -122,6 +129,6 @@ export class InteractiveManager {
         for (let i = 0; i < amount; i++) {
             new Coin(scene, x, i, y);
         }
-        EventsManager.emit("maxscore", amount);
+        MainEventsManager.emit("maxscore", amount);
     }
 }

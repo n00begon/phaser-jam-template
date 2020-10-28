@@ -1,10 +1,13 @@
+import { GameSettings } from "../utilities/GameSettings";
+import { ScalableText } from "../utilities/ScalableText";
+import { CreditsEventsManager } from "./CreditsEventsManager";
+
 /**
  * CreditText is WebFont text which fades in after a set amount of time
  */
 export class CreditText {
-    public text: Phaser.GameObjects.Text;
-    public wait: number;
-
+    private text: ScalableText;
+    private wait: number;
     /**
      * The constructor sets up the CreditText
      *
@@ -14,18 +17,31 @@ export class CreditText {
      * @param wait - how many update cycles until this credit text should fase in
      * @param fontSize - the size of the font for this credit text
      */
-    constructor(scene: Phaser.Scene, words: string, height: number, wait: number, fontSize: number) {
-        this.text = scene.add.text(scene.sys.canvas.width / 2, height, words, {
-            fontFamily: "Chewy",
-            fontSize: fontSize,
-            color: "#EB4786",
-        });
+    constructor(scene: Phaser.Scene, words: string, yScale: number, wait: number, fontSize: number) {
+        this.text = new ScalableText(
+            scene,
+            scene.sys.canvas.width / 2,
+            yScale * scene.game.canvas.height,
+            {
+                fontFamily: GameSettings.DISPLAY_FONT,
+                // The type definition has this as a string but it works as a number
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore: TS2322
+                fontSize: fontSize,
+                color: "#EB4786",
+            },
+            CreditsEventsManager,
+        );
+        this.text.setText(words);
         this.text.alpha = 0;
         this.text.setAlign("center");
         this.text.setOrigin(0.5);
         this.wait = wait;
     }
 
+    /**
+     * Fades in the text. When the text is fully displayed it returns true otherwise false.
+     */
     public update(): boolean {
         if (this.wait > 0) {
             this.wait--;

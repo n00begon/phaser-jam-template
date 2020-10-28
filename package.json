@@ -1,67 +1,68 @@
 {
-    "name": "phaser-jam-template",
-    "version": "1.0.0",
-    "description": "A Phaser 3 template to get you started on your jam.",
-    "main": "index.js",
-    "scripts": {
-        "start": "webpack-dev-server --config webpack/devconfig.js --env dev",
-        "build": "webpack --config webpack/prodconfig.js --env prod",
-        "test": "jest",
-        "lint": "eslint \"src/**\" --fix . . --ext .ts",
-        "snyk-protect": "snyk protect",
-        "prepare": "npm run snyk-protect"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/n00begon/phaser-jam-template.git"
-    },
-    "keywords": [
-        "phaser"
-    ],
-    "author": "Tim Neumegen",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/n00begon/phaser-jam-template/issues"
-    },
-    "homepage": "https://github.com/n00begon/phaser-jam-template#readme",
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run lint && npm run test",
-            "pre-push": "npm run build"
-        }
-    },
-    "dependencies": {
-        "@types/webfontloader": "^1.6.32",
-        "phaser": "^3.24.1",
-        "snyk": "^1.420.1",
-        "webfontloader": "^1.6.28"
-    },
-    "devDependencies": {
-        "@types/jest": "^25.2.3",
-        "@typescript-eslint/eslint-plugin": "^2.34.0",
-        "@typescript-eslint/parser": "^2.34.0",
-        "clean-webpack-plugin": "^3.0.0",
-        "copy-webpack-plugin": "^5.1.2",
-        "eslint": "^6.8.0",
-        "eslint-config-prettier": "^6.14.0",
-        "eslint-plugin-prettier": "^3.1.4",
-        "eslint-plugin-tsdoc": "^0.2.7",
-        "html-webpack-plugin": "^3.2.0",
-        "husky": "^4.3.0",
-        "jest": "^25.5.4",
-        "prettier": "^1.19.1",
-        "terser-webpack-plugin": "^2.3.8",
-        "ts-jest": "^25.5.1",
-        "ts-loader": "^6.2.2",
-        "typescript": "^3.9.7",
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.0"
-    },
-    "lint-staged": {
-        "*.ts": [
-            "npm run lint"
-        ]
-    },
-    "snyk": true
+  "name": "phaser-jam-template",
+  "version": "1.0.0",
+  "description": "A Phaser 3 template to get you started on your jam.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack/devconfig.js --env dev",
+    "build": "webpack --config webpack/prodconfig.js --env prod",
+    "test": "snyk test && jest",
+    "lint": "eslint \"src/**\" --fix . . --ext .ts",
+    "security-test": "snyk test",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n00begon/phaser-jam-template.git"
+  },
+  "keywords": [
+    "phaser"
+  ],
+  "author": "Tim Neumegen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n00begon/phaser-jam-template/issues"
+  },
+  "homepage": "https://github.com/n00begon/phaser-jam-template#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "pre-push": "npm run build"
+    }
+  },
+  "dependencies": {
+    "@types/webfontloader": "^1.6.32",
+    "phaser": "^3.24.1",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-tsdoc": "^0.2.7",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.3.0",
+    "jest": "^25.5.4",
+    "prettier": "^1.19.1",
+    "snyk": "^1.420.1",
+    "terser-webpack-plugin": "^2.3.8",
+    "ts-jest": "^25.5.1",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint"
+    ]
+  },
+  "snyk": true
 }

@@ -44,7 +44,7 @@ export class Toasty {
     }
 
     /**
-     * The update cycle. This is listening for key presses and controlling the movement
+     * The update cycle.This is controlling the movement
      */
     public update(): void {
         let direction = 0;

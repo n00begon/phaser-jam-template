@@ -31,58 +31,58 @@ export class Credits extends Phaser.Scene {
         const scale = this.game.canvas.height / defaultHeight;
         let order = 0;
         let assetsCount = 0;
-        this.textList[order] = new CreditText(
-            this,
-            "You Win!",
-            (top - 60) / defaultHeight,
-            wait * order++,
-            140 * scale,
+        this.textList.push(new CreditText(this, "You Win!", (top - 60) / defaultHeight, wait * order++, 140 * scale));
+        this.textList.push(
+            new CreditText(
+                this,
+                '"Phaser Jam Template"',
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                80 * scale,
+            ),
         );
-        this.textList[order] = new CreditText(
-            this,
-            '"Phaser Jam Template"',
-            (top + 100 * order) / defaultHeight,
-            wait * order++,
-            80 * scale,
-        );
-        this.textList[order] = new CreditText(
-            this,
-            "By n00begon",
-            (top + 100 * order) / defaultHeight,
-            wait * order++,
-            80 * scale,
+        this.textList.push(
+            new CreditText(this, "By n00begon", (top + 100 * order) / defaultHeight, wait * order++, 80 * scale),
         );
 
-        this.textList[order] = new CreditText(
-            this,
-            "github.com/n00begon/phaser-jam-template",
-            (assets + 100 * assetsCount++) / defaultHeight,
-            wait * order++,
-            60 * scale,
+        this.textList.push(
+            new CreditText(
+                this,
+                "github.com/n00begon/phaser-jam-template",
+                (assets + 100 * assetsCount++) / defaultHeight,
+                wait * order++,
+                60 * scale,
+            ),
         );
 
-        this.textList[order] = new CreditText(
-            this,
-            "Music Arpent from freepd.com by Kevin MacLeod",
-            (assets + 100 * assetsCount++) / defaultHeight,
-            wait * order++,
-            60 * scale,
+        this.textList.push(
+            new CreditText(
+                this,
+                "Music Arpent from freepd.com by Kevin MacLeod",
+                (assets + 100 * assetsCount++) / defaultHeight,
+                wait * order++,
+                60 * scale,
+            ),
         );
 
-        this.textList[order] = new CreditText(
-            this,
-            "Sound Effects and Background from https://kenney.nl/",
-            (assets + 100 * assetsCount++) / defaultHeight,
-            wait * order++,
-            60 * scale,
+        this.textList.push(
+            new CreditText(
+                this,
+                "Sound Effects and Background from https://kenney.nl/",
+                (assets + 100 * assetsCount++) / defaultHeight,
+                wait * order++,
+                60 * scale,
+            ),
         );
 
-        this.textList[order] = new CreditText(
-            this,
-            "Click to play again",
-            (assets + 100 * assetsCount++ + 40) / defaultHeight,
-            wait * (order + 1),
-            40 * scale,
+        this.textList.push(
+            new CreditText(
+                this,
+                "Click to play again",
+                (assets + 100 * assetsCount + 40) / defaultHeight,
+                wait * (order + 1),
+                40 * scale,
+            ),
         );
 
         this.input.on("pointerdown", () => {

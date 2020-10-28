@@ -1,0 +1,18 @@
+# https://travis-ci.com/github/n00begon/phaser-jam-template
+
+git:
+  depth: 1
+
+language: node_js
+
+node_js:
+  - '10'
+
+env:
+  - TERM=dumb
+
+script:
+  - npm install
+  - npm run lint
+  - npm run test
+  - npm run build

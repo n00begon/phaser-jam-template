@@ -31,9 +31,9 @@
         }
     },
     "dependencies": {
-        "@types/webfontloader": "^1.6.31",
+        "@types/webfontloader": "^1.6.32",
         "phaser": "^3.24.1",
-        "snyk": "^1.323.0",
+        "snyk": "^1.420.1",
         "webfontloader": "^1.6.28"
     },
     "devDependencies": {

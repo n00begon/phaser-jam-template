@@ -10,7 +10,6 @@ module.exports = {
         game: "./src/Game.ts",
     },
     mode: "production",
-    devtool: "none",
     devServer: {
         contentBase: "./../dist",
     },
@@ -52,7 +51,8 @@ module.exports = {
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true),
         }),
-        new CopyWebpackPlugin([
+        new CopyWebpackPlugin({ 
+            patterns: [
             {
                 from: "./assets",
                 to: "./assets",
@@ -63,7 +63,7 @@ module.exports = {
                 to: "./web",
                 force: true,
             },
-        ]),
+        ]}),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "index.html",

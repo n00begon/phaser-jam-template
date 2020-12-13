@@ -1,5 +1,6 @@
 import path from "path";
 import webpack from "webpack";
+import ZipWebpackPlugin from "zip-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
@@ -50,6 +51,9 @@ module.exports = {
         new webpack.DefinePlugin({
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true),
+        }),
+        new ZipWebpackPlugin({
+            filename: "game"
         }),
         new CopyWebpackPlugin({
             patterns: [

@@ -52,8 +52,7 @@ module.exports = {
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true),
         }),
-        new ZipWebpackPlugin({
-            filename: "game"
+        new CleanWebpackPlugin({
         }),
         new CopyWebpackPlugin({
             patterns: [
@@ -73,7 +72,8 @@ module.exports = {
             filename: "index.html",
             template: "index.html",
         }),
-        new CleanWebpackPlugin({
+        new ZipWebpackPlugin({
+            filename: "game"
         }),
     ],
 };

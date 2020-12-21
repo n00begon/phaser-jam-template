@@ -7,10 +7,7 @@
     "start": "webpack serve --config webpack/devconfig.ts --env dev",
     "build": "webpack --config webpack/prodconfig.ts --env prod",
     "test": "jest",
-    "lint": "eslint \"src/**\" --fix . . --ext .ts",
-    "security-test": "snyk test",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "lint": "eslint \"src/**\" --fix . . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -56,7 +53,6 @@
     "husky": "4.3.0",
     "jest": "25.5.4",
     "prettier": "1.19.1",
-    "snyk": "1.420.1",
     "terser-webpack-plugin": "2.3.8",
     "ts-jest": "25.5.1",
     "ts-loader": "6.2.2",
@@ -71,6 +67,5 @@
     "*.ts": [
       "npm run lint"
     ]
-  },
-  "snyk": true
+  }
 }

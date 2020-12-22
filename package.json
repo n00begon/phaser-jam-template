@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@types/webfontloader": "1.6.32",
-    "phaser": "3.24.1",
+    "phaser": "3.50.1",
     "webfontloader": "1.6.28"
   },
   "devDependencies": {

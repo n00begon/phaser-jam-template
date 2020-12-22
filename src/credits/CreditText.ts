@@ -25,7 +25,7 @@ export class CreditText {
             {
                 fontFamily: GameSettings.DISPLAY_FONT,
                 // The type definition has this as a string but it works as a number
-                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore: TS2322
                 fontSize: fontSize,
                 color: "#EB4786",

@@ -96,7 +96,7 @@ export class Credits extends Phaser.Scene {
      * The update loop gets the text to appear on screen
      */
     public update(): void {
-        this.textList.forEach(displayText => {
+        this.textList.forEach((displayText) => {
             displayText.update();
         });
     }

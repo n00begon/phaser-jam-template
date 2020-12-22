@@ -28,7 +28,7 @@ export class Toasty {
         this.scene = scene;
         const physicsShapes = scene.cache.json.get("physicsShapes");
         this.toasty = scene.matter.add.image(x, y, "sprites", "toasty", {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             shape: physicsShapes.toasty, //definitions does not have the shape in them
         });

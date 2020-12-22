@@ -8,12 +8,11 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 
 </div>
 <div align="center">
-
+![Github Release Date](https://img.shields.io/github/release-date/n00begon/phaser-jam-template)
 ![GitHub licence](https://img.shields.io/github/license/n00begon/phaser-jam-template)
 ![GitHub issues](https://img.shields.io/github/issues/n00begon/phaser-jam-template)
 ![Travis Build](https://travis-ci.com/n00begon/phaser-jam-template.svg?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=n00begon_phaser-jam-template&metric=alert_status)](https://sonarcloud.io/dashboard?id=n00begon_phaser-jam-template)
-![Snyk vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/n00begon/phaser-jam-template)
 ![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 ![Contributions](https://img.shields.io/badge/contributions-welcome-orange.svg)
 

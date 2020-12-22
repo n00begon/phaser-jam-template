@@ -1,14 +1,13 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+import path from "path";
+import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 module.exports = {
     entry: {
         game: "./src/Game.ts",
     },
     mode: "development",
-    devtool: "none",
     devServer: {
         contentBase: "./dist",
     },
@@ -37,18 +36,20 @@ module.exports = {
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true),
         }),
-        new CopyWebpackPlugin([
-            {
-                from: "./assets",
-                to: "./assets",
-                force: true,
-            },
-            {
-                from: "./web",
-                to: "./web",
-                force: true,
-            },
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: "./assets",
+                    to: "./assets",
+                    force: true,
+                },
+                {
+                    from: "./web",
+                    to: "./web",
+                    force: true,
+                },
+            ]
+        }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "index.html",

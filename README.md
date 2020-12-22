@@ -8,6 +8,7 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 
 </div>
 <div align="center">
+  
 ![Github Release Date](https://img.shields.io/github/release-date/n00begon/phaser-jam-template)
 ![GitHub licence](https://img.shields.io/github/license/n00begon/phaser-jam-template)
 ![GitHub issues](https://img.shields.io/github/issues/n00begon/phaser-jam-template)

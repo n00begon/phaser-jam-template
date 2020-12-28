@@ -24,14 +24,11 @@ export class CreditText {
             yScale * scene.game.canvas.height,
             {
                 fontFamily: GameSettings.DISPLAY_FONT,
-                // The type definition has this as a string but it works as a number
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore: TS2322
-                fontSize: fontSize,
                 color: "#EB4786",
             },
             CreditsEventsManager,
         );
+        this.text.setFontSize(fontSize);
         this.text.setText(words);
         this.text.alpha = 0;
         this.text.setAlign("center");

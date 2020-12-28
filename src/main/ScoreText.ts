@@ -22,14 +22,11 @@ export class ScoreText {
             y,
             {
                 fontFamily: GameSettings.DISPLAY_FONT,
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore: TS2322
-                fontSize: 100,
                 color: "#EB4786",
             },
             MainEventsManager,
         );
-
+        this.text.setFontSize(100);
         this.text.setAlign("left");
         this.text.setOrigin(0, 0);
         this.text.setScrollFactor(0, 0);

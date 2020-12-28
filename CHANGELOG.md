@@ -1,19 +1,5 @@
 # Change Log
 
-## Version 1.3.1 22th December 2020
-
-Updated to Webpack 5
-
-### New Features
-
--   npm run build now outputs a game.zip for uploading to itch.io
-### Updates
-
--   Updated to Webpack 5
--   Webpack configuration is now typed with Typescript
--   Replaced Snyk with Whitesource Bolt for security validation
--   Using Whitesource Renovate for dependency updates. All dependencies are up to date
-
 ## Version 1.3.0 28th October 2020
 
 Added support for resizing the screen size to fit different devices and mobile touch controls.

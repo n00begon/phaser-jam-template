@@ -3,6 +3,7 @@ import { Hill } from "./objects/Hill";
 import { Coin } from "./objects/Coin";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
+import { AnimationManager } from "./AnimationManager";
 
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
@@ -27,6 +28,8 @@ export class InteractiveManager {
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
+        new AnimationManager(scene);
+
         this.controlManager = new ControlManager(scene);
         this.setupAnimations(scene);
         this.setupCamera(scene);

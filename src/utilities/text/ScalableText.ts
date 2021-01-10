@@ -1,4 +1,4 @@
-import { Scaler } from "./Scaler";
+import { Scaler } from "../Scaler";
 
 /**
  * Scalable Text is WebFont text which scales based on the original size of the window

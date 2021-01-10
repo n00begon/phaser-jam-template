@@ -1,5 +1,5 @@
 import { GameSettings } from "../utilities/GameSettings";
-import { ScalableText } from "../utilities/ScalableText";
+import { ScalableText } from "../utilities/text/ScalableText";
 import { MainEventsManager } from "./MainEventsManager";
 
 /**
@@ -22,7 +22,7 @@ export class ScoreText {
             y,
             {
                 fontFamily: GameSettings.DISPLAY_FONT,
-                color: "#EB4786",
+                color: GameSettings.FONT_COLOUR,
             },
             MainEventsManager,
         );

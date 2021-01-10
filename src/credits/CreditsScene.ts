@@ -1,10 +1,13 @@
-import { CreditText } from "./CreditText";
+import { GameSettings } from "../utilities/GameSettings";
+import { FadeText } from "../utilities/text/FadeText";
 import { CreditsEventsManager } from "./CreditsEventsManager";
 /**
  * Credits is the final scene where the showing credits about the game
  */
 export class Credits extends Phaser.Scene {
-    private textList = new Array<CreditText>(5);
+    private static NEXT_SCENE: "Licence";
+    private textList = new Array<FadeText>(5);
+    private countdown = GameSettings.END_SCENE_TIME;
 
     /**
      * The constructor sets the scene ID
@@ -31,62 +34,52 @@ export class Credits extends Phaser.Scene {
         const scale = this.game.canvas.height / defaultHeight;
         let order = 0;
         let assetsCount = 0;
-        this.textList.push(new CreditText(this, "You Win!", (top - 60) / defaultHeight, wait * order++, 140 * scale));
         this.textList.push(
-            new CreditText(
+            new FadeText(
                 this,
-                '"Phaser Jam Template"',
-                (top + 100 * order) / defaultHeight,
+                "Phaser Jam Template",
+                (top - 60) / defaultHeight,
                 wait * order++,
-                80 * scale,
+                140 * scale,
+                CreditsEventsManager,
             ),
-        );
-        this.textList.push(
-            new CreditText(this, "By n00begon", (top + 100 * order) / defaultHeight, wait * order++, 80 * scale),
         );
 
         this.textList.push(
-            new CreditText(
+            new FadeText(
+                this,
+                "By n00begon",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                80 * scale,
+                CreditsEventsManager,
+            ),
+        );
+
+        this.textList.push(
+            new FadeText(
                 this,
                 "github.com/n00begon/phaser-jam-template",
                 (assets + 100 * assetsCount++) / defaultHeight,
                 wait * order++,
                 60 * scale,
+                CreditsEventsManager,
             ),
         );
 
         this.textList.push(
-            new CreditText(
-                this,
-                "Music Arpent from freepd.com by Kevin MacLeod",
-                (assets + 100 * assetsCount++) / defaultHeight,
-                wait * order++,
-                60 * scale,
-            ),
-        );
-
-        this.textList.push(
-            new CreditText(
-                this,
-                "Sound Effects and Background from https://kenney.nl/",
-                (assets + 100 * assetsCount++) / defaultHeight,
-                wait * order++,
-                60 * scale,
-            ),
-        );
-
-        this.textList.push(
-            new CreditText(
+            new FadeText(
                 this,
                 "Click to play again",
                 (assets + 100 * assetsCount + 40) / defaultHeight,
                 wait * (order + 1),
                 40 * scale,
+                CreditsEventsManager,
             ),
         );
 
         this.input.on("pointerdown", () => {
-            this.scene.start("Main");
+            this.scene.start("Licence");
         });
 
         this.scale.on("resize", this.resize);
@@ -96,9 +89,14 @@ export class Credits extends Phaser.Scene {
      * The update loop gets the text to appear on screen
      */
     public update(): void {
+        let finished = false;
         this.textList.forEach((displayText) => {
-            displayText.update();
+            finished = displayText.update();
         });
+
+        if (finished && this.countdown--) {
+            this.scene.start(Credits.NEXT_SCENE);
+        }
     }
 
     /**

@@ -4,7 +4,6 @@ import { Coin } from "./objects/Coin";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
-
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
  * The core game logic is controlled from here
@@ -16,22 +15,18 @@ export class InteractiveManager {
     private static readonly BOTTOMBOUNDS = 800;
     private static readonly WORLDWIDTH = InteractiveManager.RIGHTBOUNDS - InteractiveManager.LEFTBOUNDS;
     private static readonly WORLDHEIGHT = InteractiveManager.BOTTOMBOUNDS - InteractiveManager.TOPBOUNDS;
-
     private scene: Phaser.Scene;
     private controlManager: ControlManager;
     private maxScore: number;
     private currentScore: number;
     private toasty: Toasty;
-
     /**
      * Adds the interactive objects to the scene
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
         new AnimationManager(scene);
-
         this.controlManager = new ControlManager(scene);
-        this.setupAnimations(scene);
         this.setupCamera(scene);
         scene.matter.world.setBounds(
             InteractiveManager.LEFTBOUNDS,
@@ -39,21 +34,15 @@ export class InteractiveManager {
             InteractiveManager.WORLDWIDTH,
             InteractiveManager.WORLDHEIGHT,
         );
-
         this.maxScore = 0;
         this.currentScore = 0;
-
         MainEventsManager.on("maxscore", this.handleMaxScore, this);
         MainEventsManager.on("collection", this.handleCollection, this);
-
         this.toasty = new Toasty(scene, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 500);
-
         this.createCoinRow(scene, 3, InteractiveManager.WORLDWIDTH / 4, InteractiveManager.BOTTOMBOUNDS - 700);
         this.createCoinRow(scene, 3, (InteractiveManager.WORLDWIDTH / 4) * 3, InteractiveManager.BOTTOMBOUNDS - 700);
-
         new Hill(scene, InteractiveManager.WORLDWIDTH / 2 - 50);
     }
-
     /**
      * The main update loop for the scene.
      */
@@ -61,7 +50,6 @@ export class InteractiveManager {
         this.toasty.update();
         this.controlManager.update();
     }
-
     /**
      * Keeps track of the maximum score
      *
@@ -70,7 +58,6 @@ export class InteractiveManager {
     private handleMaxScore(amount: number): void {
         this.maxScore += amount;
     }
-
     /**
      * Keeps track of score changes. Ends the game when the current score
      * reaches the maximum score.
@@ -83,10 +70,8 @@ export class InteractiveManager {
             MainEventsManager.removeAllListeners();
             this.scene.scene.start("Credits");
         }
-
         MainEventsManager.emit("scoreChange", this.currentScore);
     }
-
     /**
      * Setups the camera
      */
@@ -99,25 +84,6 @@ export class InteractiveManager {
             InteractiveManager.WORLDWIDTH,
             InteractiveManager.WORLDHEIGHT,
         ); // Stops the camera moving off the edge of the screen
-    }
-
-    /**
-     * Sets up the animations for game objects so that they are only created once
-     *
-     * @param scene - the scene to add the animation to
-     */
-    private setupAnimations(scene: Phaser.Scene): void {
-        scene.anims.create({
-            frameRate: 10,
-            frames: scene.anims.generateFrameNames("sprites", {
-                start: 1,
-                end: 6,
-                prefix: "gold_",
-            }),
-
-            key: "coinSpin",
-            repeat: -1,
-        });
     }
 
     /**

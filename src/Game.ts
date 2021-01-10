@@ -5,7 +5,7 @@ import { Main } from "./main/MainScene";
 import { UI } from "./main/UIScene";
 import { End } from "./end/EndScene";
 import { Credits } from "./credits/CreditsScene";
-import { Licence } from "./Licence/LicenceScene";
+import { Licence } from "./licence/LicenceScene";
 
 const config: Phaser.Types.Core.GameConfig = {
     width: 1640,

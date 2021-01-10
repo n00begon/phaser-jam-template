@@ -8,6 +8,7 @@ export class End extends Phaser.Scene {
     private textList = new Array<TypewriterText>(2);
     private countdown = GameSettings.END_SCENE_TIME;
     private static readonly NEXT_SCENE = "Credits";
+
     /**
      * The constructor sets the scene ID
      */
@@ -26,6 +27,7 @@ export class End extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the Game End Text
      */
     public create(): void {
+        this.countdown = GameSettings.END_SCENE_TIME;
         const top = 200;
         const wait = 100;
         const defaultHeight = 960;
@@ -34,10 +36,10 @@ export class End extends Phaser.Scene {
         this.textList.push(
             new TypewriterText(
                 this,
-                "You ate all the toast!",
+                "You ate all the coins!",
                 (top - 60) / defaultHeight,
                 wait * order++,
-                140 * scale,
+                GameSettings.LARGE_FONT_SIZE * scale,
                 EndEventsManager,
             ),
         );
@@ -48,7 +50,7 @@ export class End extends Phaser.Scene {
                 "Click to play again",
                 (top + 600) / defaultHeight,
                 wait * (order + 1),
-                40 * scale,
+                GameSettings.SMALL_FONT_SIZE * scale,
                 EndEventsManager,
             ),
         );
@@ -69,7 +71,7 @@ export class End extends Phaser.Scene {
             finished = displayText.update();
         });
 
-        if (finished && this.countdown-- === 0) {
+        if (finished && this.countdown-- <= 0) {
             this.scene.start(End.NEXT_SCENE);
         }
     }

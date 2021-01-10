@@ -9,6 +9,8 @@ import { AnimationManager } from "./AnimationManager";
  * The core game logic is controlled from here
  */
 export class InteractiveManager {
+    private static readonly NEXT_SCENE = "End";
+
     private static readonly LEFTBOUNDS = 0;
     private static readonly RIGHTBOUNDS = 2010;
     private static readonly TOPBOUNDS = -500;
@@ -68,7 +70,7 @@ export class InteractiveManager {
         this.currentScore += amount;
         if (this.currentScore >= this.maxScore) {
             MainEventsManager.removeAllListeners();
-            this.scene.scene.start("Credits");
+            this.scene.scene.start(InteractiveManager.NEXT_SCENE);
         }
         MainEventsManager.emit("scoreChange", this.currentScore);
     }

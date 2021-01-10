@@ -8,7 +8,11 @@ export class Hill {
 
     constructor(scene: Phaser.Scene, centerX: number) {
         const physicsShapes = scene.cache.json.get("physicsShapes");
-        this.hill = scene.matter.add.image(centerX, 800, "sprites", "hill", physicsShapes.hill);
+        this.hill = scene.matter.add.image(centerX, 800, "sprites", "hill", {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            shape: physicsShapes.hill, //definitions does not have the shape in them
+        });
         this.hill.setStatic(true); // Static because they are not going to move
         this.setupCollisions(scene);
     }

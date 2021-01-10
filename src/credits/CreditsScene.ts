@@ -5,7 +5,7 @@ import { CreditsEventsManager } from "./CreditsEventsManager";
  * Credits is the final scene where the showing credits about the game
  */
 export class Credits extends Phaser.Scene {
-    private static NEXT_SCENE: "Licence";
+    private static NEXT_SCENE = "Licence";
     private textList = new Array<FadeText>(5);
     private countdown = GameSettings.END_SCENE_TIME;
 
@@ -27,6 +27,8 @@ export class Credits extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the credits list
      */
     public create(): void {
+        this.countdown = GameSettings.END_SCENE_TIME;
+
         const top = 200;
         const assets = 540;
         const wait = 100;
@@ -40,7 +42,7 @@ export class Credits extends Phaser.Scene {
                 "Phaser Jam Template",
                 (top - 60) / defaultHeight,
                 wait * order++,
-                140 * scale,
+                GameSettings.LARGE_FONT_SIZE * scale,
                 CreditsEventsManager,
             ),
         );
@@ -62,7 +64,7 @@ export class Credits extends Phaser.Scene {
                 "github.com/n00begon/phaser-jam-template",
                 (assets + 100 * assetsCount++) / defaultHeight,
                 wait * order++,
-                60 * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 CreditsEventsManager,
             ),
         );
@@ -73,13 +75,13 @@ export class Credits extends Phaser.Scene {
                 "Click to play again",
                 (assets + 100 * assetsCount + 40) / defaultHeight,
                 wait * (order + 1),
-                40 * scale,
+                GameSettings.SMALL_FONT_SIZE * scale,
                 CreditsEventsManager,
             ),
         );
 
         this.input.on("pointerdown", () => {
-            this.scene.start("Licence");
+            this.scene.start(Credits.NEXT_SCENE);
         });
 
         this.scale.on("resize", this.resize);
@@ -94,7 +96,7 @@ export class Credits extends Phaser.Scene {
             finished = displayText.update();
         });
 
-        if (finished && this.countdown--) {
+        if (finished && this.countdown-- <= 0) {
             this.scene.start(Credits.NEXT_SCENE);
         }
     }

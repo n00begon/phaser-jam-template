@@ -5,7 +5,7 @@ import { LicenceEventsManager } from "./LicenceEventsManager";
  * Licence is the final scene where the showing End about the game
  */
 export class Licence extends Phaser.Scene {
-    private static NEXT_SCENE: "Main";
+    private static NEXT_SCENE = "Main";
     private textList = new Array<PlainText>(3);
     private countdown = GameSettings.END_SCENE_TIME;
     /**
@@ -26,6 +26,7 @@ export class Licence extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the Game End Text
      */
     public create(): void {
+        this.countdown = GameSettings.END_SCENE_TIME;
         const top = 200;
         const gap = 100;
         const wait = 100;
@@ -40,7 +41,7 @@ export class Licence extends Phaser.Scene {
                 "Asset Licences",
                 (top - 150 + gap * count++) / defaultHeight,
                 wait * order++,
-                140 * scale,
+                GameSettings.LARGE_FONT_SIZE * scale,
                 LicenceEventsManager,
             ),
         );
@@ -51,7 +52,7 @@ export class Licence extends Phaser.Scene {
                 "Music Arpent from freepd.com by Kevin MacLeod",
                 (top + gap * count++) / defaultHeight,
                 wait * order++,
-                60 * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 LicenceEventsManager,
             ),
         );
@@ -62,7 +63,7 @@ export class Licence extends Phaser.Scene {
                 "Sound Effects and Background from https://kenney.nl/",
                 (top + gap * count++) / defaultHeight,
                 wait * order++,
-                60 * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 LicenceEventsManager,
             ),
         );
@@ -78,7 +79,7 @@ export class Licence extends Phaser.Scene {
      * The update loop gets the text to appear on screen
      */
     public update(): void {
-        if (this.countdown--) {
+        if (this.countdown-- <= 0) {
             this.scene.start(Licence.NEXT_SCENE);
         }
     }

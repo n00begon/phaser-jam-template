@@ -1,19 +1,19 @@
 import { GameSettings } from "../utilities/GameSettings";
-import { FadeText } from "../utilities/text/FadeText";
-import { CreditsEventsManager } from "./CreditsEventsManager";
+import { TypewriterText } from "../utilities/text/TypewriterText";
+import { EndEventsManager } from "./EndEventsManager";
 /**
- * Credits is the final scene where the showing credits about the game
+ * End is the final scene where the showing End about the game
  */
-export class Credits extends Phaser.Scene {
-    private static NEXT_SCENE = "Licence";
-    private textList = new Array<FadeText>(5);
+export class End extends Phaser.Scene {
+    private textList = new Array<TypewriterText>(2);
     private countdown = GameSettings.END_SCENE_TIME;
+    private static readonly NEXT_SCENE = "Credits";
 
     /**
      * The constructor sets the scene ID
      */
     public constructor() {
-        super("Credits");
+        super("End");
     }
 
     /**
@@ -24,64 +24,39 @@ export class Credits extends Phaser.Scene {
     }
 
     /**
-     * Create is called when the scene is loaded and sets up the credits list
+     * Create is called when the scene is loaded and sets up the Game End Text
      */
     public create(): void {
         this.countdown = GameSettings.END_SCENE_TIME;
-
         const top = 200;
-        const assets = 540;
         const wait = 100;
         const defaultHeight = 960;
         const scale = this.game.canvas.height / defaultHeight;
         let order = 0;
-        let assetsCount = 0;
         this.textList.push(
-            new FadeText(
+            new TypewriterText(
                 this,
-                "Phaser Jam Template",
+                "You ate all the coins!",
                 (top - 60) / defaultHeight,
                 wait * order++,
                 GameSettings.LARGE_FONT_SIZE * scale,
-                CreditsEventsManager,
+                EndEventsManager,
             ),
         );
 
         this.textList.push(
-            new FadeText(
-                this,
-                "By n00begon",
-                (top + 100 * order) / defaultHeight,
-                wait * order++,
-                80 * scale,
-                CreditsEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new FadeText(
-                this,
-                "github.com/n00begon/phaser-jam-template",
-                (assets + 100 * assetsCount++) / defaultHeight,
-                wait * order++,
-                GameSettings.MEDIUM_FONT_SIZE * scale,
-                CreditsEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new FadeText(
+            new TypewriterText(
                 this,
                 "Click to play again",
-                (assets + 100 * assetsCount + 40) / defaultHeight,
+                (top + 600) / defaultHeight,
                 wait * (order + 1),
                 GameSettings.SMALL_FONT_SIZE * scale,
-                CreditsEventsManager,
+                EndEventsManager,
             ),
         );
 
         this.input.on("pointerdown", () => {
-            this.scene.start(Credits.NEXT_SCENE);
+            this.scene.start(End.NEXT_SCENE);
         });
 
         this.scale.on("resize", this.resize);
@@ -97,17 +72,17 @@ export class Credits extends Phaser.Scene {
         });
 
         if (finished && this.countdown-- <= 0) {
-            this.scene.start(Credits.NEXT_SCENE);
+            this.scene.start(End.NEXT_SCENE);
         }
     }
 
     /**
      * Resize gets called when the screen is resized. It fires off an event for the other
-     * credits objects to respond to
+     * End objects to respond to
      *
      * @param gameSize - the new size of the screen
      */
     private resize(gameSize: Phaser.Structs.Size): void {
-        CreditsEventsManager.emit("resize", gameSize);
+        EndEventsManager.emit("resize", gameSize);
     }
 }

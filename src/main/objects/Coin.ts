@@ -19,11 +19,7 @@ export class Coin {
     constructor(scene: Phaser.Scene, x: number, offset: number, y: number) {
         this.scene = scene;
         const physicsShapes = scene.cache.json.get("physicsShapes");
-        this.coin = scene.matter.add.sprite(x, y, "sprites", "gold_1", {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            shape: physicsShapes.coin, //definitions does not have the shape in them
-        });
+        this.coin = scene.matter.add.sprite(x, y, "sprites", "gold_1", physicsShapes.coin);
         this.coin.setCircle(this.coin.width / 2, {});
         this.coin.setX(x + (this.coin.width + Coin.GAP) * offset);
         this.coin.setIgnoreGravity(true);

@@ -1,5 +1,20 @@
 # Change Log
 
+## Version 1.4.0 10th January 2021
+
+Split the end screen into game end, credits and licenses screens
+
+### New Features
+
+-   Three new display text options, typewriter text, fade in text and plain text
+-   Animation Manager to handle the Sprite animation setup in one place
+
+### Updates
+
+-   Updated to Phaser 3.51.0
+-   Updated dependencies
+-   Fixed Typing issues
+
 ## Version 1.3.1 22th December 2020
 
 Updated to Webpack 5
@@ -7,6 +22,7 @@ Updated to Webpack 5
 ### New Features
 
 -   npm run build now outputs a game.zip for uploading to itch.io
+
 ### Updates
 
 -   Updated to Webpack 5

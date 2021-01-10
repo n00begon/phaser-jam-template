@@ -26,12 +26,14 @@ export class Toasty {
      */
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.scene = scene;
+        // this.toasty = scene.matter.add.image(x, y, "sprites", "toasty", physicsShapes.toasty);
         const physicsShapes = scene.cache.json.get("physicsShapes");
         this.toasty = scene.matter.add.image(x, y, "sprites", "toasty", {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             shape: physicsShapes.toasty, //definitions does not have the shape in them
         });
+
         this.lastY = y;
         this.toasty.setScale(0.8);
         this.toasty.setFriction(0);

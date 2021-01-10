@@ -1,4 +1,4 @@
-import { Scaler } from "./Scaler";
+import { Scaler } from "../Scaler";
 
 /**
  * Scalable Text is WebFont text which scales based on the original size of the window
@@ -21,7 +21,6 @@ export class ScalableText extends Phaser.GameObjects.Text {
         super(scene, x, y, "", style);
         scene.add.existing(this);
         this.scaler = new Scaler(x, y, scene.game.canvas.width, scene.game.canvas.height);
-        console.log("Hi", x, y, style.color, eventManager);
         eventManager.on("resize", this.handleResize, this);
     }
 

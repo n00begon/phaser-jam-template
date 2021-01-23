@@ -1,14 +1,11 @@
-import { GameSettings } from "../utilities/GameSettings";
-import { TypewriterText } from "../utilities/text/TypewriterText";
 import { EndEventsManager } from "./EndEventsManager";
+import { EndText } from "./EndText";
 /**
  * End is the final scene where the showing End about the game
  */
 export class End extends Phaser.Scene {
-    private textList = new Array<TypewriterText>(2);
-    private countdown = GameSettings.END_SCENE_TIME;
     private static readonly NEXT_SCENE = "Credits";
-
+    private endText!: EndText;
     /**
      * The constructor sets the scene ID
      */
@@ -27,51 +24,19 @@ export class End extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the Game End Text
      */
     public create(): void {
-        this.countdown = GameSettings.END_SCENE_TIME;
-        const top = 200;
-        const wait = 100;
-        const defaultHeight = 960;
-        const scale = this.game.canvas.height / defaultHeight;
-        let order = 0;
-        this.textList.push(
-            new TypewriterText(
-                this,
-                "You ate all the coins!",
-                (top - 60) / defaultHeight,
-                wait * order++,
-                GameSettings.LARGE_FONT_SIZE * scale,
-                EndEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new TypewriterText(
-                this,
-                "Click to play again",
-                (top + 600) / defaultHeight,
-                wait * (order + 1),
-                GameSettings.SMALL_FONT_SIZE * scale,
-                EndEventsManager,
-            ),
-        );
+        this.endText = new EndText(this);
+        this.scale.on("resize", this.resize);
 
         this.input.on("pointerdown", () => {
             this.scene.start(End.NEXT_SCENE);
         });
-
-        this.scale.on("resize", this.resize);
     }
 
     /**
      * The update loop gets the text to appear on screen
      */
     public update(): void {
-        let finished = false;
-        this.textList.forEach((displayText) => {
-            finished = displayText.update();
-        });
-
-        if (finished && this.countdown-- <= 0) {
+        if (this.endText.update()) {
             this.scene.start(End.NEXT_SCENE);
         }
     }

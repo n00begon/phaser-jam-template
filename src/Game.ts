@@ -26,6 +26,10 @@ const config: Phaser.Types.Core.GameConfig = {
         },
     },
 
+    input: {
+        gamepad: true,
+    },
+
     scale: {
         mode: Phaser.Scale.RESIZE,
         width: "100%",

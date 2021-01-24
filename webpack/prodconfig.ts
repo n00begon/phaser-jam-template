@@ -65,7 +65,7 @@ module.exports = {
                     from: "./web",
                     to: "./web",
                     force: true,
-                },
+                }
             ]
         }),
         new HtmlWebpackPlugin({
@@ -73,6 +73,7 @@ module.exports = {
             template: "index.html",
         }),
         new ZipWebpackPlugin({
+            path: "../itch/",
             filename: "game"
         }),
     ],

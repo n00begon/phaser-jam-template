@@ -82,11 +82,10 @@ export class ControlManager {
         const pad = this.scene.input.gamepad.gamepads[0];
 
         // Every button is jump
-        for (let b = 0; b < pad.buttons.length; b++) {
-            if (pad.buttons[b].pressed) {
-                MainEventsManager.emit("jumpMove");
-            }
+        if (pad.buttons[0].pressed) {
+            MainEventsManager.emit("jumpMove");
         }
+
         const xMovement = pad.leftStick.x;
 
         // Stick

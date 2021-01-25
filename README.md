@@ -55,6 +55,10 @@ Implementing multiple ways of input for your game is always a challenge under pr
 
 Use the bootloader to quickly get your game logo on the screen then watch as the loading bar displays while it loads your spritesheets, audio, fonts and json into the game.
 
+## Builds
+
+The builds for the project are controlled by [Webpack](https://webpack.js.org/). The dev build from `npm run start` runs locally with no additional webserver required. It hot reloads your changes so you can try out your ideas quickly. When you are ready to submit `npm run build` creates a dist directory with everything you need. It also creates a `game.zip` in the itch directory for you to upload straight to [itch.io](https://itch.io/docs/creators/html5).
+
 ## Code Quality
 
 To help keep your code clean and working through the jam there are some tools to help avoid the last day spaghetti mess.

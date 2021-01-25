@@ -41,8 +41,8 @@ export class LicenceText {
             new PlainText(
                 scene,
                 "Sound Effects and Background from https://kenney.nl/",
-                (top + gap * count++) / defaultHeight,
-                wait * order++,
+                (top + gap * count) / defaultHeight,
+                wait * order,
                 GameSettings.MEDIUM_FONT_SIZE * scale,
                 LicenceEventsManager,
             ),

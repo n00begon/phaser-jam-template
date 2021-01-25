@@ -1,5 +1,22 @@
 # Change Log
 
+## Version 1.4.1 25th January 2021
+
+Added Gamepad Support
+
+### New Features
+
+-   Gamepads are now supported in the Control Manager. Tested with an XBOX360 controller and a flight stick
+-   Split the Control Manager into the different input types to make it easier to modify
+-   The build now creates the game.zip in the itch directory ready for uploading striaght to [itch.io](https://itch.io/docs/creators/html5)
+
+### Updates
+
+-   Updated to Phaser 3.52.0
+-   Updated depencencies
+-   Made the text screens more robust to multiple playthroughs
+-   Updated README with better instructions
+
 ## Version 1.4.0 10th January 2021
 
 Split the end screen into game end, credits and licenses screens

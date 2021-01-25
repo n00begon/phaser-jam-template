@@ -1,13 +1,11 @@
-import { GameSettings } from "../utilities/GameSettings";
-import { FadeText } from "../utilities/text/FadeText";
 import { CreditsEventsManager } from "./CreditsEventsManager";
+import { CreditsText } from "./CreditsText";
 /**
  * Credits is the final scene where the showing credits about the game
  */
 export class Credits extends Phaser.Scene {
-    private static NEXT_SCENE = "Licence";
-    private textList = new Array<FadeText>(5);
-    private countdown = GameSettings.END_SCENE_TIME;
+    private static readonly NEXT_SCENE = "Licence";
+    private creditsText!: CreditsText;
 
     /**
      * The constructor sets the scene ID
@@ -27,76 +25,19 @@ export class Credits extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the credits list
      */
     public create(): void {
-        this.countdown = GameSettings.END_SCENE_TIME;
-
-        const top = 200;
-        const assets = 540;
-        const wait = 100;
-        const defaultHeight = 960;
-        const scale = this.game.canvas.height / defaultHeight;
-        let order = 0;
-        let assetsCount = 0;
-        this.textList.push(
-            new FadeText(
-                this,
-                "Phaser Jam Template",
-                (top - 60) / defaultHeight,
-                wait * order++,
-                GameSettings.LARGE_FONT_SIZE * scale,
-                CreditsEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new FadeText(
-                this,
-                "By n00begon",
-                (top + 100 * order) / defaultHeight,
-                wait * order++,
-                80 * scale,
-                CreditsEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new FadeText(
-                this,
-                "github.com/n00begon/phaser-jam-template",
-                (assets + 100 * assetsCount++) / defaultHeight,
-                wait * order++,
-                GameSettings.MEDIUM_FONT_SIZE * scale,
-                CreditsEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new FadeText(
-                this,
-                "Click to play again",
-                (assets + 100 * assetsCount + 40) / defaultHeight,
-                wait * (order + 1),
-                GameSettings.SMALL_FONT_SIZE * scale,
-                CreditsEventsManager,
-            ),
-        );
+        this.scale.on("resize", this.resize);
+        this.creditsText = new CreditsText(this);
 
         this.input.on("pointerdown", () => {
             this.scene.start(Credits.NEXT_SCENE);
         });
-
-        this.scale.on("resize", this.resize);
     }
 
     /**
      * The update loop gets the text to appear on screen
      */
     public update(): void {
-        let finished = false;
-        this.textList.forEach((displayText) => {
-            finished = displayText.update();
-        });
-
-        if (finished && this.countdown-- <= 0) {
+        if (this.creditsText.update()) {
             this.scene.start(Credits.NEXT_SCENE);
         }
     }

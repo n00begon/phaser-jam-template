@@ -3,5 +3,7 @@ node_modules/
 
 # Build
 dist/
+itch/
 /npm-debug.log
 .eslintcache
+.vscode

@@ -19,11 +19,11 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 
 </div>
 
-[Phaser](https://github.com/photonstorm/phaser) is a great framework to do your gamejam in, giving you an easily sharable HTML5 game while having the power to make your ideas a reality. Kick off your gamejam well by being all ready to go with this template. The goal is to let you focus on your game and have all the plumbing you need sorted out. Typescript, code quality, building for itch, various input methods, examples, bootloader, preloader, main game, end screen, credits screen and license screen. Try out the [live game](https://n00begon.com/games/toasty/) to see what you will start with. See the recent updates in the [change log](CHANGELOG.md)
+[Phaser](https://github.com/photonstorm/phaser) is a great framework to do your game jam in, giving you an easily sharable HTML5 game while having the power to make your ideas a reality. Kick off your game jam well by being all ready to go with this template. The goal is to let you focus on your game and have all the plumbing you need sorted out. Typescript, code quality, building for itch, various input methods, examples, bootloader, preloader, main game, end screen, credits screen and license screen. Try out the [live game](https://n00begon.com/games/toasty/) to see what you will start with. See the recent updates in the [change log](CHANGELOG.md)
 
 # Getting Started
 
-Once you have the template you need to install the depencies.
+Once you have the template you need to install the dependencies.
 
 ```bash
 npm install
@@ -45,7 +45,7 @@ Head over to [phaser.io/learn](https://phaser.io/learn) for tutorials and code e
 
 # Features
 
-This framework has been designed to give you all the pieces you need to get started on your idea and grow with you through the gamejam. It also has some extra helpers that you might not normally have time to implement.
+This framework has been designed to give you all the pieces you need to get started on your idea and grow with you through the game jam. It also has some extra helpers that you might not normally have time to implement.
 
 ## Input
 
@@ -73,7 +73,7 @@ To use Prettier and ESLint to auto fix in VSCode:
 }
 ```
 
-[jest](https://jestjs.io/) is there to help you to test any tricky algorithms and [husky](https://typicode.github.io/husky/) will make sure you don't end up commiting a broken project at an inopportune moment.
+[jest](https://jestjs.io/) is there to help you to test any tricky algorithms and [husky](https://typicode.github.io/husky/) will make sure you don't end up committing a broken project at an inopportune moment.
 
 ## Scaling
 
@@ -81,7 +81,7 @@ The game and end screens are built with different screen sizes in mind. For the 
 
 # Layout
 
-The code is designed to give you all the pieces you need to give your gamejam game a solid structure to build from. This is often something that you don't have time to architect during the jam but will pay off as you come to the end and can still safely modify your code.
+The code is designed to give you all the pieces you need to give your game jam game a solid structure to build from. This is often something that you don't have time to architect during the jam but will pay off as you come to the end and can still safely modify your code.
 
 ## assets
 
@@ -113,7 +113,7 @@ The end scene displays what has happened at the end of your game.
 
 ### credits
 
-The credits scene is where you can write about the team who made it and the gamejam it was created for.
+The credits scene is where you can write about the team who made it and the game jam it was created for.
 
 ### license
 

@@ -8,13 +8,13 @@ Added Gamepad Support
 
 -   Gamepads are now supported in the Control Manager. Tested with an XBOX360 controller and a flight stick
 -   Split the Control Manager into the different input types to make it easier to modify
--   The build now creates the game.zip in the itch directory ready for uploading striaght to [itch.io](https://itch.io/docs/creators/html5)
+-   The build now creates the game.zip in the itch directory ready for uploading straight to [itch.io](https://itch.io/docs/creators/html5)
 
 ### Updates
 
 -   Updated to Phaser 3.52.0
--   Updated depencencies
--   Made the text screens more robust to multiple playthroughs
+-   Updated dependencies
+-   Made the text screens more robust to multiple play throughs
 -   Updated README with better instructions
 
 ## Version 1.4.0 10th January 2021

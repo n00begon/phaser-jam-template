@@ -6,3 +6,4 @@ dist/
 itch/
 /npm-debug.log
 .eslintcache
+.vscode

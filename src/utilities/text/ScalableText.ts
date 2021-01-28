@@ -9,7 +9,10 @@ export class ScalableText extends Phaser.GameObjects.Text {
      * The constructor sets up the ScalableText
      *
      * @param scene - the scene to add the credit text to
-
+     * @param x - the x position on the screen to display the text
+     * @param y - the y position on the screen to display the text
+     * @param style - a Phaser TextStyle object
+     * @param eventManager - an object that emits resize events for the text
      */
     constructor(
         scene: Phaser.Scene,

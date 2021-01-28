@@ -13,9 +13,10 @@ export class FadeText {
      *
      * @param scene - the scene to add the text to
      * @param words - the string which will make up the text
-     * @param height - the y position on the screen to display the text
+     * @param yScale - the relative y position of the text on the screen
      * @param wait - how many update cycles until this text should fade in
      * @param fontSize - the size of the font for this text
+     * @param eventManager - an object that emits resize events for the text
      */
     constructor(
         scene: Phaser.Scene,

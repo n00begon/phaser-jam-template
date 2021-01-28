@@ -9,7 +9,7 @@ export class LoadingBar {
     private static readonly BAR_OFFSET = 10;
 
     /**
-     * Creates a new loading bar which has a Box color and a bar color.
+     * Creates a new loading bar which has a box color and a bar color.
      * @param scene - the scene to add the loading bar graphics to.
      */
     public constructor(scene: Phaser.Scene) {

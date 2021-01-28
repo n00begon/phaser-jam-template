@@ -65,7 +65,7 @@ To help keep your code clean and working through the jam there are some tools to
 
 [eslint](https://eslint.org/) will keep your Typescript correct and [Prettier](https://prettier.io/) will keep it consistent.
 
-To use Prettier and ESLint to auto fix in VSCode:
+To use Prettier and ESLint to auto fix in VSCode, install the ESLint extension in the Extensions tab and add the following lines to .vscode/settings.json:
 
 ```
 "editor.codeActionsOnSave": {

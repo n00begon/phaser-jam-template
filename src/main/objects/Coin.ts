@@ -13,7 +13,8 @@ export class Coin {
      * Creates the coin object
      *
      * @param scene - the phaser scene to add the object to
-     * @param x - the x position where the coin will start
+     * @param x - the x position
+     * @param offset -- the offset (in coins) from the x position where the coin will start
      * @param y - the y position where the coin will start
      */
     constructor(scene: Phaser.Scene, x: number, offset: number, y: number) {

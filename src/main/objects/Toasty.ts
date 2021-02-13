@@ -7,7 +7,7 @@ export class Toasty {
     private static readonly TURN_SPEED = 0.06;
     private static readonly ACCELERATION = Toasty.TURN_SPEED / 20;
     private static readonly MOVE_SPEED = 5;
-    private static readonly JUMP_HEIGHT = 16;
+    private static readonly JUMP_HEIGHT = 20;
     private toasty: Phaser.Physics.Matter.Image;
     private scene: Phaser.Scene;
     private canJump = false;

@@ -1,8 +1,8 @@
 import { GameSettings } from "../utilities/GameSettings";
-import { TypewriterText } from "../utilities/text/TypewriterText";
+import { FadeText } from "../utilities/text/FadeText";
 import { EndEventsManager } from "./EndEventsManager";
 export class EndText {
-    private textList = new Array<TypewriterText>(2);
+    private textList = new Array<FadeText>(2);
     private countdown: number;
 
     constructor(scene: Phaser.Scene) {
@@ -13,7 +13,7 @@ export class EndText {
         const scale = scene.game.canvas.height / defaultHeight;
         let order = 0;
         this.textList.push(
-            new TypewriterText(
+            new FadeText(
                 scene,
                 "You ate all the coins!",
                 (top - 60) / defaultHeight,
@@ -24,7 +24,7 @@ export class EndText {
         );
 
         this.textList.push(
-            new TypewriterText(
+            new FadeText(
                 scene,
                 "Click to play again",
                 (top + 600) / defaultHeight,

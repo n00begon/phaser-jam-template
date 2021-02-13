@@ -37,6 +37,8 @@ export class Toasty {
         this.lastY = y;
         this.toasty.setScale(0.8);
         this.toasty.setFriction(0);
+
+        // The main camera follows the player
         this.scene.cameras.main.startFollow(this.toasty);
 
         MainEventsManager.on("bounce", this.handleBounce, this);

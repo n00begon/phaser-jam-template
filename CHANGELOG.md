@@ -1,5 +1,18 @@
 # Change Log
 
+## Version 1.5.0 13th February 2021
+
+Added Instructions Scene
+
+### New Features
+
+-   An instruction scene is displayed after the game loads. This needs to be clicked past so that the game has audio focus.
+-   The end scene wraps around to the main game rather than displaying the instructions again
+
+### Updates
+
+-   Updated dependencies
+
 ## Version 1.4.1 25th January 2021
 
 Added Gamepad Support

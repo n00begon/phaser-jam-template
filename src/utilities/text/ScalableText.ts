@@ -1,7 +1,7 @@
 import { Scaler } from "../Scaler";
 
 /**
- * Scalable Text is WebFont text which scales based on the original size of the window
+ * Scalable Text is WebFont text item which scales based on the original size of the window
  */
 export class ScalableText extends Phaser.GameObjects.Text {
     private scaler: Scaler;

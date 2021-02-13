@@ -1,7 +1,7 @@
 import { MainEventsManager } from "../MainEventsManager";
 
 /**
- * Coin is an item for Toasty to collect.
+ * Coin is a physics item for Toasty to collect.
  */
 export class Coin {
     static readonly GAP = 10;

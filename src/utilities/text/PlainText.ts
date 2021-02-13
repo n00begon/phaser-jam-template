@@ -2,7 +2,7 @@ import { GameSettings } from "../GameSettings";
 import { ScalableText } from "./ScalableText";
 
 /**
- * PlainText is WebFont text
+ * PlainText is WebFont text item which displays immediately
  */
 export class PlainText {
     private text: ScalableText;

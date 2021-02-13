@@ -2,7 +2,7 @@ import { GameSettings } from "../GameSettings";
 import { ScalableText } from "./ScalableText";
 
 /**
- * TypewriterText is WebFont text which types one letter at a time
+ * TypewriterText is WebFont text item which types one letter at a time
  */
 export class TypewriterText {
     private static readonly LETTER_PAUSE = 2;

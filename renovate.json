@@ -2,11 +2,22 @@
   "extends": [
     "config:base"
   ],
+  "groupName": "all dependencies",
+  "separateMajorMinor": false,
+  "groupSlug": "all",
   "packageRules": [
     {
-      "depTypeList": ["devDependencies"],
-      "updateTypes": ["minor", "patch", "pin", "digest"],
-      "schedule": ["every weekend"]
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "groupName": "all dependencies",
+      "groupSlug": "all"
     }
+  ],
+  "lockFileMaintenance": {
+    "enabled": false
+  },
+  "schedule": [
+    "first day of the month"
   ]
 }

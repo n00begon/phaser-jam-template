@@ -2,7 +2,7 @@ import { GameSettings } from "../GameSettings";
 import { ScalableText } from "./ScalableText";
 
 /**
- * FadeText is WebFont text which fades in after a set amount of time
+ * FadeText is WebFont text item which fades in after a set amount of time
  */
 export class FadeText {
     private text: ScalableText;

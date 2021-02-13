@@ -7,7 +7,7 @@ export class Toasty {
     private static readonly TURN_SPEED = 0.06;
     private static readonly ACCELERATION = Toasty.TURN_SPEED / 20;
     private static readonly MOVE_SPEED = 5;
-    private static readonly JUMP_HEIGHT = 16;
+    private static readonly JUMP_HEIGHT = 20;
     private toasty: Phaser.Physics.Matter.Image;
     private scene: Phaser.Scene;
     private canJump = false;
@@ -37,6 +37,8 @@ export class Toasty {
         this.lastY = y;
         this.toasty.setScale(0.8);
         this.toasty.setFriction(0);
+
+        // The main camera follows the player
         this.scene.cameras.main.startFollow(this.toasty);
 
         MainEventsManager.on("bounce", this.handleBounce, this);

@@ -32,7 +32,7 @@ export class Preloader extends Phaser.Scene {
      * When the preloader has finished it transitions to the main scene
      */
     public create(): void {
-        this.scene.start("Main");
+        this.scene.start("Instructions");
     }
 
     /**

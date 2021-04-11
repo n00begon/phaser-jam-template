@@ -1,5 +1,13 @@
 # Change Log
 
+## Version 1.4.3 1th April 2021
+
+Phaser Updated to 3.54.0
+
+### Updates
+
+-   Updated dependencies
+
 ## Version 1.4.2 13th February 2021
 
 Added Instructions Scene

@@ -12,7 +12,7 @@ module.exports = {
     },
     mode: "production",
     devServer: {
-        contentBase: "./../dist",
+        contentBase: "./../",
     },
     output: {
         path: path.resolve(__dirname, "../dist"),

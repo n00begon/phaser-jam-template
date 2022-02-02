@@ -9,7 +9,7 @@ module.exports = {
     },
     mode: "development",
     devServer: {
-        contentBase: "./dist",
+        static: "./",
     },
     output: {
         path: path.resolve(__dirname, "dist"),

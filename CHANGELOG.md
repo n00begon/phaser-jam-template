@@ -1,5 +1,14 @@
 # Change Log
 
+## Version 1.4.4 2nd February 2022
+
+Fixed Webpack configuration issue in the update to Webpack 4.0.0 (thanks @CodePsy-2001)
+
+### Updates
+
+-   Updated dependencies
+-   Updated to npm lock file version 2
+
 ## Version 1.4.3 1th April 2021
 
 Phaser Updated to 3.54.0

@@ -107,17 +107,9 @@ The Bootloader and Preloader get all your assets into the game. It has a loading
 
 The Main Scene is the core game loop. The objects holds the interactive game objects and there are a number of managers to keep the various parts of your code clean as it grows. There is also a UI Scene which overlays text on top of the game.
 
-### end
+### instructions, end, credits, license
 
-The end scene displays what has happened at the end of your game.
-
-### credits
-
-The credits scene is where you can write about the team who made it and the game jam it was created for.
-
-### license
-
-The license scene gives you an easy place to meet your creative commons licencing requirements.
+These scenes are text based for you to tell your player how to play, wrap up the game, credit the developers and meet your licensing requirements.
 
 ### utilities
 

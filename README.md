@@ -19,7 +19,7 @@ A [Phaser 3](https://phaser.io/) Jam Template with [TypeScript](https://www.type
 
 </div>
 
-[Phaser](https://github.com/photonstorm/phaser) is a great framework to do your game jam in, giving you an easily sharable HTML5 game while having the power to make your ideas a reality. Kick off your game jam well by being all ready to go with this template. The goal is to let you focus on your game and have all the plumbing you need sorted out. Typescript, code quality, building for itch, various input methods, examples, bootloader, preloader, main game, end screen, credits screen and license screen. Try out the [live game](https://n00begon.com/games/toasty/) to see what you will start with. See the recent updates in the [change log](CHANGELOG.md)
+[Phaser](https://github.com/photonstorm/phaser) is a great framework to do your game jam in, giving you an easily sharable HTML5 game while having the power to make your ideas a reality. Kick off your game jam well by being all ready to go with this template. The goal is to let you focus on your game and have all the plumbing you need sorted out. Typescript, code quality, building for itch, various input methods, examples, bootloader, preloader, main game, end screen, credits screen and license screen. Try out the [live game](https://n00begon.com/game/toasty/) to see what you will start with. See the recent updates in the [change log](CHANGELOG.md)
 
 # Getting Started
 

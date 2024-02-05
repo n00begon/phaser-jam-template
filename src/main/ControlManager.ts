@@ -20,9 +20,9 @@ export class ControlManager {
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
-        let keyboard =  scene.input.keyboard;
-        if(!keyboard){
-            keyboard = new Phaser.Input.Keyboard.KeyboardPlugin(scene.input)
+        let keyboard = scene.input.keyboard;
+        if (!keyboard) {
+            keyboard = new Phaser.Input.Keyboard.KeyboardPlugin(scene.input);
         }
 
         this.jumpKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -31,7 +31,7 @@ export class ControlManager {
         this.rightKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.leftKey2 = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.rightKey2 = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        
+
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.currentPointer = pointer;
         });

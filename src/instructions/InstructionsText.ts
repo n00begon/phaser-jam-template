@@ -8,7 +8,7 @@ export class InstructionsText {
     constructor(scene: Phaser.Scene) {
         this.countdown = GameSettings.INSTRUCTIONS_SCENE_TIME;
         const top = 200;
-        const wait = 200;
+        const wait = 150;
         const defaultHeight = 960;
         const scale = scene.game.canvas.height / defaultHeight;
         let order = 0;
@@ -51,7 +51,7 @@ export class InstructionsText {
                 scene,
                 "Click to play",
                 (top + 600) / defaultHeight,
-                wait * (order + 1),
+                wait * order,
                 GameSettings.SMALL_FONT_SIZE * scale,
                 InstructionsEventsManager,
             ),

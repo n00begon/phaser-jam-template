@@ -5,7 +5,7 @@ import { ScalableText } from "./ScalableText";
  * TypewriterText is WebFont text item which types one letter at a time
  */
 export class TypewriterText {
-    private static readonly LETTER_PAUSE = 2;
+    private static readonly LETTER_PAUSE = 1;
     private text: ScalableText;
     private wait: number;
     private words: string;

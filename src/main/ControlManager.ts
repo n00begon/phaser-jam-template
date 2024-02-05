@@ -20,13 +20,18 @@ export class ControlManager {
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
-        this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        this.jumpKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        let keyboard =  scene.input.keyboard;
+        if(!keyboard){
+            keyboard = new Phaser.Input.Keyboard.KeyboardPlugin(scene.input)
+        }
 
+        this.jumpKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.jumpKey2 = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        this.leftKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        this.rightKey = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        this.leftKey2 = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.rightKey2 = keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.currentPointer = pointer;
         });
@@ -74,7 +79,7 @@ export class ControlManager {
     }
 
     private gamepadInput() {
-        if (this.scene.input.gamepad.total === 0) {
+        if (!this.scene.input.gamepad || this.scene.input.gamepad.total === 0) {
             return;
         }
 
